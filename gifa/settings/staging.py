@@ -112,7 +112,7 @@ MEDIA_URL = "/media/"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'dmdb',                      # Or path to database file if using sqlite3.
+        'NAME': 'gifa',                      # Or path to database file if using sqlite3.
         'USER': 'master_dmdb',                      # Not used with sqlite3.
         'PASSWORD': 'htdmdb123',                  # Not used with sqlite3.
         'HOST': 'htrds-sea-dm-stag.cjhi5m3tqh3k.ap-southeast-1.rds.amazonaws.com',                      # Set to empty string for localhost. Not used with sqlite3.

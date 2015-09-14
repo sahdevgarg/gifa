@@ -27,7 +27,7 @@ SECRET_KEY = '@afhv#ciou+ocz7vi#%)11%@bnchto9*$f!aj6xs5plo#_9hjz'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+FACEBOOK_ID = 1439528452994485
 
 # Application definition
 

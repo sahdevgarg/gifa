@@ -110,7 +110,7 @@
 {% block javascript %}
   {{ block.super }}
    <script type="text/javascript" src="http://tinymce.cachefly.net/4.2/tinymce.min.js"></script>
-  <script src="/static/js/add_article.js"></script>
+  <script src="{{STATIC_URL}}js/add_article.js"></script>
 <script>
 var image_upload = false
 if("{{edit}}" == "True")

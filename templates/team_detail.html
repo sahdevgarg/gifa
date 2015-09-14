@@ -27,10 +27,8 @@
 
 
       <div class="">
-        <a href="#">
           <img style="width:128px; height: 128px;" class="media-object" src="{{STATIC_URL}}image/dummy.png" data-holder-rendered="true" title="{{team.team_manager}}" alt="{{team.team_manager}}">
-        </a>
-      
+
       </div>
       <div class="" style="margin-top:10px;">
         <h4 class="media-heading">{{team.team_manager|title}}</h4>
@@ -76,18 +74,14 @@
 <div class="container">
 {% for player in player_list %}
 
-<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" style="margin-bottom: 40px; ">
-<div style="padding:10px; border: 1px solid #ddd; ">
+<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" style="margin-bottom: 40px; height:190px">
+    <div style="padding:10px; border: 1px solid #ddd; ">
       <div style="">
-        <a href="#">
           <img style="width:128px; height: 128px;" class="media-object" src="/media/dummy.png" data-holder-rendered="true">
-        </a>
       
       </div>
       <div class="" style="margin-top:10px;">
         <h4 class="media-heading">{{player.name|title}}</h4>
-        <h5>Matches played: {{player.games_played}}</h5>
-        <h5>Goals: {{player.total_goal}}</h5>
       </div>  
     </div>
 </div>

@@ -1,0 +1,81 @@
+ 
+{% extends "base.html" %}
+{% block content%}
+  
+  <div class="container" style="background:rgba(0,0,0, 0.1);padding: 0px;">
+
+      {% include "header.html"%}
+    </div>
+<div class="container" style="background:rgba(255,255,255, 0.8);padding: 0px;">
+<div class="container" style="background:rgba(255,255,255, 0.1);">         
+  <div class="row" style="  border-top: 1px solid #ddd;   padding-top: 20px;">
+
+  <div class="col-lg-9 col-md-8 left-more-news">
+  <h3 style="margin-top:0;">Latest News</h3>
+  {% for news in news_list %}
+  {% with news.get_absolute_url as news_url%}
+  <div class="media">
+      <div class="media-left">
+        <a href="{{news_url}}">
+          <img style="width: 190px;" class="media-object center-cropped" src="{{news.coverimage}}" data-holder-rendered="true">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><a href="{{news_url}}">{{news.title}}</a></h4>
+        {{news.content|removetags:'p img'|safe|truncatechars:200}}
+        
+        <ul class="list-inline"><li>By <a href="#">{{news.user}}</a></li><li class="pull-right"><a href="#"><i class="fa fa-comment"></i> 2</a></li><li class="pull-right"><a href="#"><i class="fa fa-facebook"></i> 14</a></li></ul>
+
+      </div>
+    </div>
+    {% endwith %}
+    {% endfor %}
+
+    {% if page_list|length > 1%}
+      <div style="text-align:center; padding: 10px;">
+      {% if news_list.number != page_list|first  %}
+      <a href="?page={{news_list.previous_page_number}}">< Previous</a>
+      {% endif %}
+    {% for page in page_list%}
+      {% if page == news_list.number %}
+      <a href="?page={{page}}" style="color:black">{{page}}</a>
+      {% else %}
+      <a href="?page={{page}}">{{page}}</a>
+      {% endif %}
+    {% endfor %}
+    {% if news_list.number != page_list|last  %}
+      <a href="?page={{news_list.next_page_number}}">Next ></a>
+      {% endif %}
+    </div>
+    {% endif %}
+     
+  </div>
+
+
+<div class="col-lg-3  col-md-4">
+<div class="panel panel-primary panel-tweets">
+  <div class="panel-heading">
+    <h3 class="panel-title">Tweets</h3>
+  </div>
+  <div class="panel-body">
+    <a class="twitter-timeline" href="https://twitter.com/hashtag/htgifa" data-widget-id="641207408245669888">#htgifa Tweets</a>
+  </div>
+  </div>
+</div>
+       
+    </div>
+     </div>
+        <footer style="    background:rgba(0,0,0, 0.1); height: 250px; padding: 20px 0px;">
+            <div class="container">
+                <div class="col-lg-12">
+                    <p>Copyright © HT Media 2015</p>
+                </div>
+            </div>
+        </footer>
+
+
+
+   
+    <!-- /.container -->
+</div>
+{% endblock content%}

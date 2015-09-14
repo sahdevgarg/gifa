@@ -1,0 +1,72 @@
+<div class="header" style="padding: 20px 0px; min-height: 240px; ">
+          <div class="col-sm-5">
+            <a href="http://www.hindustantimes.com/" class=" "><img src="/media/ht-logo.png"></a><p style="color: #fff; font-size:10px;margin-top: 20px;">Powered by</p>
+          <ul style="margin:0px; padding: 0;margin-bottom: 30px;">
+                <li style="list-style-type:none; display: inline-block;">
+                  <a href="http://olx.in/"><img src="/media/olx-01.png" style="width:48px;"></a>
+                </li>
+                <li style="list-style-type:none; display: inline-block; margin-left: 20px;">
+                  <a href="http://www.saregroup.com/"><img src="/media/saare-home.png"></a>
+                </li>
+          </ul>
+
+         </div>
+        <div class="col-sm-2">
+          <a href="/">
+          <img class="" src="/media/gifa-01.png" style="width: 200px;">
+          </a>
+        </div>
+    
+
+
+            <div class="clearfix"></div>
+
+</div>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">htGIFA<img class="" src="/media/gifa-01.png" style="width: 46px;">
+      </a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="/news_listing.htm">News</a></li>
+        <li><a href="/matches.htm">Matches</a></li>
+        <li><a href="/teams_listing.htm">Teams</a></li>
+        <li><a href="/gallery.htm">Gallery</a></li>
+      </ul>
+    </div>
+    <div style="    float: right;
+    margin-top: 8px;">
+        <div style="    text-align: right;">
+        {% if request.user.is_authenticated %}
+            <a href="/upload_image.htm" class="btn btn-success btn-sm" style="font-size: 14px;">
+              <span class="fa fa-camera" aria-hidden="true" style="margin-right: 5px;"></span>Upload An Image</a>
+            <a href="/write_article.htm" class="btn btn-success btn-sm" style="font-size: 14px;">
+              <span class="fa fa-edit" aria-hidden="true" style="margin-right: 5px;"></span> Write an Article</a>
+            <div class="btn-group" style="    margin-left: 10px;">
+              <a href="#" class=" btn-sm" style="margin: 0;padding: 0;">
+                <img id="fb_image" src="http://placehold.it/32x32" height="32px" width="32px">
+              </a>
+              <a href="#" class=" dropdown-toggle  btn-sm " data-toggle="dropdown" aria-expanded="false" style="    padding: 0;"><span class="caret"></span></a>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="">{{request.user.first_name}} {{request.user.last_name}}</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </div>
+        {% else %}
+          <a href="/writer.htm?image=true" class="btn btn-success btn-sm" style="font-size: 14px;">
+              <span class="fa fa-camera" aria-hidden="true" style="margin-right: 5px;"></span>Upload An Image</a>
+          <a href="/writer.htm" class="btn btn-success btn-sm" style="font-size: 14px;">
+              <span class="fa fa-edit" aria-hidden="true" style="margin-right: 5px;"></span> Write an Article</a>
+            <a href="" class="" style=" ">
+              <img onClick="fbLogin(false)" src="/media/fb-login.png" style="height: 36px;">
+            </a>
+        {% endif %}
+      </div>
+      </div>
+  </div>
+</nav>

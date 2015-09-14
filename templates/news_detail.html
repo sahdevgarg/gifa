@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content%}
+  {% if preview %}
+    <div class="container" style="background-color:#D6D6D6;margin: 4%;height: 90px;position: absolute;top: 0;z-index: 99999;margin-top: 0;left: 4px;margin-top: 51px;">
+      <center style="font-size:21px">This is a preview copy </center>
+     
+      <a style="width: 283px;
+    padding: 10px;
+    border: 1px solid #100F0F;
+    margin: 0;
+    background-color: #C2C6CA;
+    font-size: 15px;"href="/edit/article{{news.id}}.htm">Edit</a>
+      <a style="width: 283px;
+    padding: 10px;
+    border: 1px solid #100F0F;
+    margin: 0;
+    background-color: #C2C6CA;
+    font-size: 15px;"href="/api/news_enable/?news_id={{news.id}}">Submit</a>
+  
+      </div>
+       
+{% endif %}
+     <!-- Page Content -->
+<div class="container" style="background:rgba(0,0,0, 0.1);padding: 0px; ">
+
+      {% include "header.html"%}
+    <!-- Page Content -->
+<div class="container" style="background:rgba(255,255,255, 0.8);padding: 0px;">
+<div class="container" style="background:rgba(255,255,255, 0.1);">         
+  <div class="row" style="  border-top: 1px solid #ddd;   padding-top: 20px;">
+
+  <div class="col-lg-9 col-md-8 news-detail">
+
+    <h1>{{news.title}}</h1>
+    <div class="news_metadata">
+      By <a href="#">{{news.user}}</a>
+      <p class="news_time">{{news.created_date}}</p>
+    </div>
+
+      <img style="width:100%;" class="img-responsive" src="{{news.coverimage}}" alt="">
+
+
+
+<div style="margin-top: 40px;">
+<div class="post-content">
+
+{{news.content|safe}}
+
+</div> 
+
+<div class="fb-comments" data-href="http://www.htgifa.hindustantimes.com/" data-numposts="5"></div>
+
+</div>
+
+  </div>
+
+
+  <div class="col-lg-3  col-md-4">
+
+
+
+<div class="panel panel-primary panel-tweets">
+  <div class="panel-heading">
+    <h3 class="panel-title">Tweets</h3>
+  </div>
+  <div class="panel-body">
+    <a class="twitter-timeline" href="https://twitter.com/hashtag/htgifa" data-widget-id="641207408245669888">#htgifa Tweets</a>
+  </div>
+
+  </div>
+</div>
+       
+        <!-- Footer -->
+        
+
+
+
+    </div>
+        <footer style="    background:rgba(0,0,0, 0.1); height: 250px; padding: 20px 0px;">
+            <div class="container">
+                <div class="col-lg-12">
+                    <p>Copyright © HT Media 2015</p>
+                </div>
+            </div>
+        </footer>
+
+
+
+    </div>
+    <!-- /.container -->
+</div>
+{% endblock content%}

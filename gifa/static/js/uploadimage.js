@@ -73,3 +73,6 @@ function validateForm(){
       }
   }
 
+ $(document).ready(function() {
+  $(".select_box").select2();
+});

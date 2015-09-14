@@ -88,11 +88,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.static',
+                'django.core.context_processors.media',
             ],
         },
     },
 ]
-STATIC_ROOT = os.path.join(PROJECT_PATH, 'gifa')
+STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 TEMPLATE_DIRS = (
                  os.path.join(PROJECT_PATH, 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -102,11 +104,8 @@ TEMPLATE_DIRS = (
 
 WSGI_APPLICATION = 'gifa.wsgi.application'
 
-MEDIA_ROOT = os.path.join(os.path.abspath(os.path.join(PROJECT_PATH, os.pardir)), 'media')
-IMAGE_ROOT = "main"
+MEDIA_ROOT = os.path.join(os.path.abspath(os.path.join(PROJECT_PATH, os.pardir)), 'media_gifa')
 MEDIA_URL = "/media/"
-TMP_ROOT = os.path.join(MEDIA_ROOT,"tmp")
-USER_UPLOADS = "user_uploads"
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 

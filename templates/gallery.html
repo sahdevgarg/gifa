@@ -27,9 +27,7 @@
 </div>
 <div id="links">
     {% for image in image_list %}
-    <a href="{{image.image}}" title="{{image.title}}" data-gallery style="background-color: WHITE;
-    padding: 2px;
-    display: inline-block;">
+    <a href="{{image.image}}" title="{{image.title}}" data-gallery style="background-color: WHITE;padding: 2px;display: inline-block;">
         <img src="{{image.image}}" width="200px" height="120px" alt="{{image.title}}">
     </a>
     {% endfor %}

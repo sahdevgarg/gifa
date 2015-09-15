@@ -72,7 +72,7 @@
               <span class="fa fa-edit" aria-hidden="true" style="margin-right: 5px;"></span> <span class="">Write an Article</span></a>
         </li>
         <li style="margin-right: 10px;">
-          <a href="" class="" style="padding: 0;margin-top: -3px;">
+          <a href="javascript:void(0)"  style="padding: 0;margin-top: -3px;">
               <img onClick="fbLogin(false)" src="{{STATIC_URL}}image/fb-login.png" style="height: 36px;">
             </a>
         </li>
@@ -174,25 +174,22 @@
                           {
                            window.location.href = window.location.origin +"/upload_image.htm"
                           }
+                          else
+                          {
+                            location.reload();
+                          }
                       },
                   });
       }
       window.fbAsyncInit = function() {
         FB.init({
-          appId      : '1439528452994485',
+          appId      : '1517841141791610',
           cookie     : true, 
           xfbml      : true,  
           version    : 'v2.2'
         });
-         {% if not request.user.is_authenticated %}
-            FB.getLoginStatus(function(response) {
-                if (response.status === 'connected' ) 
-                  { 
-                      fbSignin(response)
-                      return;
-                  }
-              });
-          {% else %}
+      
+          {% if request.user.is_authenticated %}
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected' ) 
                   { 

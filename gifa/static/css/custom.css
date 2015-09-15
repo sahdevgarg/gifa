@@ -108,7 +108,7 @@ body {
 }
 
 .center-cropped {
-  height: 142px;
+  height: auto;
   width: 190px;
 }
 
@@ -206,3 +206,4 @@ width: 100%;
 height: auto;
 }
 .post-content {margin-bottom: 40px;}
+iframe { display: block; }

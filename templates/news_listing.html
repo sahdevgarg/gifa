@@ -22,7 +22,7 @@
       </div>
       <div class="media-body">
         <h4 class="media-heading"><a href="{{news_url}}">{{news.title}}</a></h4>
-        {{news.content|removetags:'p img'|safe|truncatechars:200}}
+        {{news.content|removetags:'p img div'|safe|truncatechars:200}}
         
         <ul class="list-inline"><li>By <a href="#">{{news.user}}</a></li><li class="pull-right"><a href="#"><i class="fa fa-comment"></i> 2</a></li><li class="pull-right"><a href="#"><i class="fa fa-facebook"></i> 14</a></li></ul>
 

@@ -10,7 +10,10 @@ class NewsListApiView(generics.ListAPIView):
 		no_records = self.request.REQUEST.get('no_records', 12)
 		news_list = News.objects.filter(enabled=True)
 		paginator = Paginator(news_list, no_records)
-		page = paginator.page(page)
+		try:
+			page = paginator.page(page)
+		except:
+			return Response({"result":"No data avialable for this page"})
 		serializer_news = PageNewsListSerializer(instance=page)
 		return Response({"result":serializer_news.data})
 

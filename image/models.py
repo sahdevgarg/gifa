@@ -10,7 +10,7 @@ class Image(models.Model):
     """
     title = models.CharField(_('title*'), max_length=191)
     image = models.CharField(max_length=200)
-    team = models.ForeignKey(Teams,related_name="Team A+")
+    team = models.ForeignKey(Teams,related_name="Team A+",blank=True , null=True)
     tags = models.CharField(_('tags'), max_length=255,blank=True)
     user = models.ForeignKey(User,verbose_name=_('Author'))
     enabled = models.BooleanField(default=True)

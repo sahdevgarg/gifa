@@ -5,6 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from gifa.views import JSONView
 from django.http import HttpResponseRedirect
 from django.contrib.auth import get_user_model
+from django.http import HttpResponseRedirect
 from django.contrib import auth
 import uuid
 
@@ -25,3 +26,10 @@ class Userview(JSONView):
 	@csrf_exempt
 	def dispatch(self, *args, **kwargs):
 		return super(NewsImageview, self).dispatch(*args, **kwargs)
+
+class Logoutview(JSONView):
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        auth.logout(request)
+        return  HttpResponseRedirect('/')

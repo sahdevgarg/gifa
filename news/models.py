@@ -14,7 +14,7 @@ class News(models.Model):
     coverimage = models.CharField(max_length=200)
     team_a = models.ForeignKey(Teams,related_name="Team A+")
     # comment_count = models.PositiveIntegerField(default=0,editable = False)
-    team_b = models.ForeignKey(Teams,related_name="Team B+",null=True)
+    team_b = models.ForeignKey(Teams,related_name="Team B+",null=True,blank=True)
     tags = models.CharField(_('tags'), max_length=255,blank=True)
     seo_desc = models.TextField(blank=True)
     enabled = models.BooleanField(default=True)

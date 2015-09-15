@@ -6,6 +6,7 @@ import os
 from django.db import transaction
 import csv
 from teams.models import Teams
+from match.models import Match
 from player.models import Player
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -20,7 +21,10 @@ class Command(BaseCommand):
             team_man_email = data[4]
             team_mob = data[5]
             locality = data[6]
-            team = Teams.objects.create(team_name=team_name,city=team_city,team_email=team_email,team_manager=team_man,team_manager_email=team_man_email,team_manager_mob=team_mob,locality=locality,team_group='2')
+            try:
+                team = Teams.objects.create(team_name=team_name,city=team_city,team_email=team_email,team_manager=team_man,team_manager_email=team_man_email,team_manager_mob=team_mob,locality=locality,team_group='1')
+            except:
+                pass
             for i in range(0,10,1):
                 print i
 
@@ -39,4 +43,7 @@ class Command(BaseCommand):
                     image = None
                 print name,email,gendre,mobile_no,address,image
                 print "**********************************"
-                player = Player.objects.create(name=name,team=team,email=email,gendre=gendre,mobile_no=mobile_no,address=address,image=image,team_group='2')
+                try:
+                    player = Player.objects.create(name=name,team=team,email=email,gendre=gendre,mobile_no=mobile_no,address=address,image=image,team_group='1')
+                except:
+                    pass

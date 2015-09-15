@@ -24,7 +24,7 @@ function imageIsLoaded(e) {
     $('#myImg').attr('src', e.target.result);
     img_width = $('#myImg').width();
     img_height = $('#myImg').height();
-    if (img_width > '400' && img_height > '200' )
+    if (img_width > '200' && img_height > '100' )
     {
        image_upload = true
     }

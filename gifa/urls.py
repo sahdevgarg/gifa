@@ -7,7 +7,7 @@ from image.views import Imageview,ImageListview
 from gifa.views import IndexView
 from teams.views import TeamsList,TeamdetailView
 from match.views import MatchList
-from accounts.views import Userview
+from accounts.views import Userview,Logoutview
 from news.api_views import NewsListApiView,NewsDetailApiView
 from teams.api_views import TeamsListApiView,TeamsDetailApiView
 from image.api_views import ImagelistingApiView
@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.STATIC_ROOT}),
     url(r'^image/upload/',NewsImageview.as_view()),
     url(r'^api/user_data/',Userview.as_view()),
+    url(r'^api/logout_user/',Logoutview.as_view()),
     url(r'^api/news_enable/',SaveNews.as_view()),
     url(r'^upload_image.htm$',Imageview.as_view()),
 

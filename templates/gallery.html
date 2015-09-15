@@ -32,6 +32,23 @@
     </a>
     {% endfor %}
 </div>
+{% if page_list|length > 1%}
+      <div style="text-align:center; padding: 10px;">
+      {% if image_list.number != page_list|first  %}
+      <a href="?page={{image_list.previous_page_number}}">< Previous</a>
+      {% endif %}
+    {% for page in page_list%}
+      {% if page == image_list.number %}
+      <a href="?page={{page}}" style="color:black">{{page}}</a>
+      {% else %}
+      <a href="?page={{page}}">{{page}}</a>
+      {% endif %}
+    {% endfor %}
+    {% if image_list.number != page_list|last  %}
+      <a href="?page={{image_list.next_page_number}}">Next ></a>
+      {% endif %}
+    </div>
+    {% endif %}
 </div>
 <div class="col-lg-3  col-md-4">
 <div class="panel panel-primary panel-tweets">

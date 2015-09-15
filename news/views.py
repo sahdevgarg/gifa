@@ -50,9 +50,9 @@ class Addarticleview(TemplateView):
 		data = request.POST
 		user = get_user_model().objects.get(email=request.user.email)
 		team_a = Teams.objects.get(id = data["Team1"])
-		if(data["Team2"] != ""):
+		try:
 			team_b = Teams.objects.get(id = data["Team2"])
-		else:
+		except:
 			team_b = None
 		preview = request.POST.get('preview', False)
 		submit = request.POST.get('save', False)
@@ -93,9 +93,9 @@ class Editarticleview(TemplateView):
 		data = request.POST
 		user = get_user_model().objects.get(email=request.user.email)
 		team_a = Teams.objects.get(id = data["Team1"])
-		if(data["Team2"] != ""):
+		try:
 			team_b = Teams.objects.get(id = data["Team2"])
-		else:
+		except:
 			team_b = None
 		slug = slugify(data["title"])
 		news_obj = News.objects.get(id=data["news_id"])

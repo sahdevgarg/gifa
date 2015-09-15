@@ -23,14 +23,14 @@ function imageIsLoaded(e) {
     $('#myImg').attr('src', e.target.result);
     img_width = $('#myImg').width();
     img_height = $('#myImg').height();
-    if (img_width > '400' && img_height > '200' )
+    if (img_width > '200' && img_height > '100' )
     {
        image_upload = true
     }
     else
     {
       $('#myImg').attr('src', no_image_src);
-      alert("Please upload the image with minimum dimension 400 X 200")
+      alert("Please upload the image with minimum dimension 200 X 100")
 
     }
 }
@@ -41,7 +41,7 @@ function validateForm(){
     var title_count = parseInt($("#count").text());
     var team1 = $("#team1").val();
     var team2 = $("#team2").val();
-    if (title.length < 20)
+    if (title.length < 10)
     {
       alert(" Minimum title length should be 20")
       return false
@@ -60,15 +60,7 @@ function validateForm(){
         }
         else
         {
-          if(!team1)
-          {
-            alert("please select a team")
-            return false
-          }
-          else
-          {
             return true
-          }
         }
       }
   }

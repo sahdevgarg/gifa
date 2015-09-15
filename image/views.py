@@ -3,6 +3,7 @@ from teams.models import Teams
 from image.models import Image
 from match.models import Match
 from django.contrib.auth import get_user_model
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
@@ -25,7 +26,10 @@ class Imageview(TemplateView):
 
 	def post(self, request, *args, **kwargs):
 		data = request.POST
-		team = Teams.objects.get(id = data["Team1"])
+		try:
+			team = Teams.objects.get(id = data["Team1"])
+		except:
+			team = None
 		user = get_user_model().objects.get(email=request.user.email)
 		name = u'{name}.{ext}'.format(
 	        name=uuid.uuid4().hex,
@@ -46,5 +50,12 @@ class ImageListview(TemplateView):
 	template_name = "gallery.html"
 	def get(self,*args, **kwargs):
 		context = super(ImageListview, self).get_context_data(**kwargs)
-		context["image_list"] = Image.objects.all();
+		image_list = Image.objects.all();
+		paginator = Paginator(image_list, 20)
+		page = self.request.GET.get('page',"")
+		try:
+			context["image_list"]  = paginator.page(page)
+		except:
+			context["image_list"]  = paginator.page(1)
+		context["page_list"] = paginator.page_range
 		return self.render_to_response(context)

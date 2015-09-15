@@ -1,7 +1,8 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from teams.models import Teams
-from teams.serializers import TeamsListingSerializer
+from teams.serializers import TeamsListingSerializer,TeamsDetailSerializer
+
 class TeamsListApiView(generics.ListAPIView):
 	model = Teams
 	def get(self, request, *args, **kwargs):
@@ -17,5 +18,5 @@ class TeamsDetailApiView(generics.ListAPIView):
 			news = Teams.objects.get(id=team_id,enabled=True)
 		except :
 			return Response({"result":"incorrect team id"})
-		serializer = TeamsListingSerializer(news)
+		serializer = TeamsDetailSerializer(news)
 		return Response({"result":serializer.data})

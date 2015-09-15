@@ -13,13 +13,13 @@
          
 <div class="row" style="  border-top: 1px solid #ddd;   padding-top: 20px;">
 
-  <div class="col-lg-6 col-md-8 left-more-news">
+<div class="col-lg-6 col-md-8 left-more-news">
 
-{% with news_list.0 as news %}
+  {% with news_list.0 as news %}
             <div class="main-featured-item" style="border-bottom:1px dotted #ccc">
               <a href="{{news.get_absolute_url}}">
-                <img style="width:100%; max-height: 410px;" class="img-responsive" src="{{news.coverimage}}" alt="">
-                </a>
+              <img style="width:100%; max-height: 410px;" class="img-responsive" src="{{news.coverimage}}" alt="">
+              </a>
               <a href="{{news.get_absolute_url}}">
               <h3 itemprop="name" style="margin-top:10px">{{news.title}}</h3></a>
               <p>{{news.content|removetags:'p img'|safe|truncatechars:200}}</p></a>
@@ -64,7 +64,6 @@
     </div>
     {% endif %}
   </div>
-
 
   <div class="col-lg-6  col-md-4">
 

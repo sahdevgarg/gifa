@@ -201,3 +201,8 @@ body {
 }
  .region.nav-tabs > li > a {color: #fff}
  .region.nav-tabs > li.active > a,.region.nav-tabs > li:hover > a {color: #222}
+.post-content img {
+width: 100%;
+height: auto;
+}
+.post-content {margin-bottom: 40px;}

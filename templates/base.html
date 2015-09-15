@@ -57,7 +57,7 @@
             <img id="fb_image" src="http://placehold.it/32x32" height="32px" width="32px">
             <span class="caret"></span></a>
           <ul class="dropdown-menu pull-right" role="menu">
-                <li><a href=""> {{request.first_name}} {{request.last_name}}</a></li>
+                <li><a href=""> {{request.user.first_name}} {{request.user.last_name}}</a></li>
                 <li class="divider"></li>
                 <li><a href="/api/logout_user/">Logout</a></li>
               </ul>
@@ -71,8 +71,8 @@
           <a href="/write_article.htm" class="btn btn-success btn-sm" style="font-size: 14px; padding:5px 10px">
               <span class="fa fa-edit" aria-hidden="true" style="margin-right: 5px;"></span> <span class="">Write an Article</span></a>
         </li>
-        <li style="    margin-right: 10px;">
-          <a href="" class="" style=" ">
+        <li style="margin-right: 10px;">
+          <a href="" class="" style="padding: 0;margin-top: -3px;">
               <img onClick="fbLogin(false)" src="{{STATIC_URL}}image/fb-login.png" style="height: 36px;">
             </a>
         </li>

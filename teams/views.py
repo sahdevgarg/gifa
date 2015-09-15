@@ -12,7 +12,8 @@ class TeamsList(TemplateView):
 	template_name = "team_listing.html"
 	def get(self,*args, **kwargs):
 		context = super(TeamsList, self).get_context_data(**kwargs)
-		context["team_list"] = Teams.objects.filter(enabled=True)
+		context["city"] = self.request.GET.get('city','Delhi')
+		context["team_list"] = Teams.objects.filter(enabled=True,city=context["city"])
 		return self.render_to_response(context)
 
 class TeamdetailView(TemplateView):

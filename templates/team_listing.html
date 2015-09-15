@@ -1,10 +1,42 @@
 {% extends "base.html" %}
 {% block content%}
 
-     <!-- Page Content -->
 <div class="container" style="background:rgba(0,0,0, 0.1);padding: 0px; ">
-      {% include "header.html"%}
+      <div class="header" style="padding: 20px 0pxn 0px; min-height: 240px; ">
+      <div class="col-sm-5">
+          <div class="reg-area">
+            <h3>GREAT INDIAN</h3>
+            <h2>FOOTBALL ACTION</h2>
+            <h1>IS BACK!</h1>
+          </div>
+      </div>
+        <div class="col-sm-2">
+          <a href="/">
+          <img class="" src="{{STATIC_URL}}image/gifa-01.png" style="width: 200px;">
+          </a>
+        </div>
+    
+       <div class="col-sm-5" style="text-align:right">
+            <a href="http://www.hindustantimes.com/" class=" "><img src="{{STATIC_URL}}image/ht-logo.png"></a><p style="color: #fff; font-size:10px;margin-top: 20px;">Powered by</p>
+          <ul style="margin:0px; padding: 0;margin-bottom: 30px;">
+                <li style="list-style-type:none; display: inline-block;">
+                  <a href="http://olx.in/"><img src="{{STATIC_URL}}image/olx-01.png" style="width:48px;"></a>
+                </li>
+                <li style="list-style-type:none; display: inline-block; margin-left: 20px;">
+                  <a href="http://www.saregroup.com/"><img src="{{STATIC_URL}}image/saare-home.png"></a>
+                </li>
+          </ul>
+
+         </div>
+      <div class="clearfix"></div>
+      <ul class="region nav nav-tabs" style="padding-left: 20px;">
+      <li {% if city == "Delhi" %} class="active"{% endif%}><a href="/teams/listing.htm?city=Delhi"  style="padding: 10px 30px;">Delhi</a></li>
+      <li {% if city == "Gurgaon" %} class="active"{% endif%}><a href="/teams/listing.htm?city=Gurgaon">Gurgaon</a></li>
+      </ul>
+
 </div>
+</div>
+
     <!-- Page Content -->
     <div class="container" style="background:rgba(255,255,255, 0.8);padding: 0px;">
         
@@ -16,7 +48,7 @@
 <div class="row" style="  border-top: 1px solid #ddd;   padding-top: 20px;">
 
 <div class="col-lg-9 col-md-8 news-detail" id="teams">
-<h2>Teams</h2>
+<h2>{{city}} Teams</h2>
 <input class="search form-control" placeholder="Search" style="margin:10px 0px" />
 <table class="table table-striped table-hover ">
   <thead>
@@ -89,9 +121,10 @@
  <script type="text/javascript">
   $("document").ready(function(){
     var options = {
-    valueNames: [ 'name', 'city' ,'manager' , 'draw' , 'loss' , 'win' , 'game']
+    valueNames: [ 'name', 'city' ,'manager' , 'draw' , 'loss' , 'win' , 'game'],
+    page : 293
         };
-    var hackerList = new List('teams', options);
+    var hackerList = new List('teams', options,300);
 
   })
   </script>

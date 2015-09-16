@@ -227,7 +227,12 @@ height: auto;
 iframe { display: block;
           width:100%;
            }
-
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #222;
+    background-color: #f9f2f4;
+    border-radius: 4px;
 
 
 

@@ -17,7 +17,10 @@ class News(models.Model):
     team_b = models.ForeignKey(Teams,related_name="Team B+",null=True,blank=True)
     tags = models.CharField(_('tags'), max_length=255,blank=True)
     seo_desc = models.TextField(blank=True)
+    opening_ceremony = models.BooleanField(default=True)
     enabled = models.BooleanField(default=True)
+    rejected = models.BooleanField(default=False)
+    comment = models.TextField(blank=True)
     created_date = models.DateTimeField(_('Created Date'), auto_now_add=True)
     modified_date = models.DateTimeField(_('Modified Date'), auto_now=True)
     def __unicode__(self):

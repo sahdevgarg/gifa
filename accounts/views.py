@@ -6,6 +6,8 @@ from gifa.views import JSONView
 from django.http import HttpResponseRedirect
 from django.contrib.auth import get_user_model
 from django.http import HttpResponseRedirect
+from news.models import News
+from django.views.generic import TemplateView
 from django.contrib import auth
 import uuid
 
@@ -33,3 +35,13 @@ class Logoutview(JSONView):
         context = self.get_context_data(**kwargs)
         auth.logout(request)
         return  HttpResponseRedirect('/')
+
+class UserDetailView(TemplateView):
+    template_name = "user_profile.html"
+    def get(self,*args, **kwargs):
+        context = super(UserDetailView, self).get_context_data(**kwargs)
+        user = get_user_model().objects.get(id=context["user_id"]);
+        print user,self.request.user
+        context["news_list"] = News.objects.filter(user= self.request.user.id)
+        print "aaaaa",context["news_list"]
+        return self.render_to_response(context)

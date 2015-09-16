@@ -56,7 +56,9 @@ class Addarticleview(TemplateView):
 			team_b = None
 		fb_id = request.POST.get('fb_id', False)
 		preview = request.POST.get('preview', False)
+		done = request.POST.get('done', False)
 		submit = request.POST.get('save', False)
+		open_cerm = request.POST.get('open_cer',True)
 		name = u'{name}.{ext}'.format(
 		    name=uuid.uuid4().hex,
 		    ext=os.path.splitext(request.FILES['image'].name)[1].strip('.')
@@ -68,12 +70,16 @@ class Addarticleview(TemplateView):
 		for chunk in request.FILES['image'].chunks():
 			destination.write(chunk)
 		if preview:
-			news = News.objects.create(title=data["title"],coverimage=media_path,content=data["news_content"],user=user,tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=False,fb_id=fb_id);
-			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,user=user);
+			news = News.objects.create(title=data["title"],coverimage=media_path,content=data["news_content"],user=user,tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=False,opening_ceremony=open_cerm,fb_id=fb_id);
+			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,user=user,enabled=False);
 			return HttpResponseRedirect('/news/'+str(news.slug)+'/article'+str(news.id)+'.htm?preview=True')
+		if done:
+			news = News.objects.create(title=data["title"],coverimage=media_path,content=data["news_content"],user=user,tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=False,opening_ceremony=open_cerm,fb_id=fb_id);
+			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,user=user,enabled=False);
+			return HttpResponseRedirect('/user/'+self.request.user.first_name+'/'+self.request.user.id+'.htm')
 		if submit:
-			news = News.objects.create(title=data["title"],coverimage=media_path,content=data["news_content"],user=user,tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=True,fb_id=fb_id);
-			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,user=user);
+			news = News.objects.create(title=data["title"],coverimage=media_path,content=data["news_content"],user=user,tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=True,opening_ceremony=open_cerm,fb_id=fb_id);
+			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,user=user,enabled=True);
 			return HttpResponseRedirect('/news/'+str(news.slug)+'/article'+str(news.id)+'.htm')
 
 	@csrf_exempt
@@ -82,17 +88,18 @@ class Addarticleview(TemplateView):
 
 class Editarticleview(TemplateView):
 	template_name = "add_article.html"
-	def get_context_data(self,*args, **kwargs):
+	def get(self,*args, **kwargs):
 		context = super(Editarticleview, self).get_context_data(**kwargs)
 		context["edit"] = True
 		context["teams"] = Teams.objects.all();
 		context["news"] = News.objects.get(id=context["news_id"]);
-		return context
+		return  self.render_to_response(context)
 
 	def post(self, request, *args, **kwargs):
 		context = self.get_context_data(**kwargs)
 		data = request.POST
 		user = get_user_model().objects.get(email=request.user.email)
+		open_cerm = request.POST.get('open_cer')
 		team_a = Teams.objects.get(id = data["Team1"])
 		try:
 			team_b = Teams.objects.get(id = data["Team2"])
@@ -116,11 +123,11 @@ class Editarticleview(TemplateView):
 		preview = request.POST.get('preview', False)
 		submit = request.POST.get('save', False)
 		if preview:
-			news = News.objects.filter(id=data["news_id"]).update(title=data["title"],coverimage=media_path,content=data["news_content"],user=user,tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=False);
+			news = News.objects.filter(id=data["news_id"]).update(title=data["title"],coverimage=media_path,content=data["news_content"],tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,opening_ceremony=open_cerm,enabled=False);
 			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,user=user);
 			return HttpResponseRedirect('/news/'+str(news_obj.slug)+'/article'+str(news_obj.id)+'.htm?preview=True')
 		if submit:
-			news = News.objects.filter(id=data["news_id"]).update(title=data["title"],coverimage=media_path,content=data["news_content"],user=user,tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=True);
+			news = News.objects.filter(id=data["news_id"]).update(title=data["title"],coverimage=media_path,content=data["news_content"],tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,opening_ceremony=open_cerm,enabled=True);
 			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,user=user);
 			return HttpResponseRedirect('/news/'+str(news_obj.slug)+'/article'+str(news_obj.id)+'.htm')
 
@@ -134,7 +141,7 @@ class NewsdetailView(TemplateView):
 	def get_context_data(self,*args, **kwargs):
 		context = super(NewsdetailView, self).get_context_data(**kwargs)
 		context["news"] = News.objects.get(id=context["news_id"]);
-		if self.request.user == context["news"].user:
+		if self.request.user.is_superuser or self.request.user ==context["news"].user:
 			context["preview"] = self.request.GET.get('preview', "")
 		else:
 			context["preview"] = ""
@@ -152,11 +159,52 @@ class SaveNews(JSONView):
 		except:
 			return HttpResponseRedirect('/')
 
+class RejectNews(JSONView):
+
+    def get(self, *args, **kwargs):
+		context = super(SaveNews, self).get_context_data(**kwargs)
+		news_id = self.request.GET.get('news_id',"")
+		try:
+			news = News.objects.filter(id=news_id).update(rejected=True);
+			return HttpResponseRedirect('/pending_article.htm')
+		except:
+			return HttpResponseRedirect('/')
+
 class NewsList(TemplateView):
 	template_name = "news_listing.html"
 	def get(self,*args, **kwargs):
 		context = super(NewsList, self).get_context_data(**kwargs)
 		news_list = News.objects.filter(enabled=True)
+		paginator = Paginator(news_list, 10)
+		page = self.request.GET.get('page',"")
+		if page:
+			context["news_list"] = paginator.page(page)
+		else:
+			context["news_list"] = paginator.page(1)
+		context["page_list"] = paginator.page_range
+		return self.render_to_response(context)
+
+class NewsopenListview(TemplateView):
+	template_name = "news_open_list.html"
+	def get(self,*args, **kwargs):
+		context = super(NewsopenListview, self).get_context_data(**kwargs)
+		news_list = News.objects.filter(enabled=True,opening_ceremony=True)
+		paginator = Paginator(news_list, 10)
+		page = self.request.GET.get('page',"")
+		if page:
+			context["news_list"] = paginator.page(page)
+		else:
+			context["news_list"] = paginator.page(1)
+		context["page_list"] = paginator.page_range
+		return self.render_to_response(context)
+
+class NewsapprovalView(TemplateView):
+	template_name = "news_approval.html"
+	def get(self,*args, **kwargs):
+		context = super(NewsapprovalView, self).get_context_data(**kwargs)
+		if not self.request.user.is_superuser:
+			return HttpResponseRedirect('/') 
+		news_list = News.objects.filter(enabled=False)
 		paginator = Paginator(news_list, 10)
 		page = self.request.GET.get('page',"")
 		if page:

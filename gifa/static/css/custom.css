@@ -60,6 +60,7 @@ body {
 .reg-area {
   text-align: center;
   color: #fff;
+  margin-top: 20px;
 }
       .reg-area h3 {
     font-size: 38px;
@@ -229,5 +230,11 @@ iframe { display: block;
            }
 
 
+.navbar.navbar-default.navbar-fixed-top {
+  position: fixed;
+}
 
+body {
+  padding-top: 28px;
+}
 

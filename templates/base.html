@@ -186,7 +186,7 @@
       }
       window.fbAsyncInit = function() {
         FB.init({
-          appId      : '1517841141791610',
+          appId      : '1439528452994485',
           cookie     : true, 
           xfbml      : true,  
           version    : 'v2.2'
@@ -196,7 +196,9 @@
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected' ) 
                   { 
-                      FB.api('/me', function(response){});
+                      FB.api('/me', function(response){
+                        $("#fb_id").val(response.link)
+                      });
                       userId = response.authResponse.userID
                       $("#fb_image").attr("src","http://graph.facebook.com/"+userId+"/picture?type=normal")
                       return;

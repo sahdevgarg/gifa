@@ -34,7 +34,7 @@
 
     <h1>{{news.title}}</h1>
     <div class="news_metadata">
-      By <a href="#">{{news.user}}</a>
+      By <a {% if news.fb_id %}href="{{news.fb_id}}"{%else%}href="#"{% endif %}>{{news.user}}</a>
       <p class="news_time">{{news.created_date}}</p>
     </div>
 

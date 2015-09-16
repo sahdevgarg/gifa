@@ -54,6 +54,7 @@ class Addarticleview(TemplateView):
 			team_b = Teams.objects.get(id = data["Team2"])
 		except:
 			team_b = None
+		fb_id = request.POST.get('fb_id', False)
 		preview = request.POST.get('preview', False)
 		submit = request.POST.get('save', False)
 		name = u'{name}.{ext}'.format(
@@ -67,11 +68,11 @@ class Addarticleview(TemplateView):
 		for chunk in request.FILES['image'].chunks():
 			destination.write(chunk)
 		if preview:
-			news = News.objects.create(title=data["title"],coverimage=media_path,content=data["news_content"],user=user,tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=False);
+			news = News.objects.create(title=data["title"],coverimage=media_path,content=data["news_content"],user=user,tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=False,fb_id=fb_id);
 			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,user=user);
 			return HttpResponseRedirect('/news/'+str(news.slug)+'/article'+str(news.id)+'.htm?preview=True')
 		if submit:
-			news = News.objects.create(title=data["title"],coverimage=media_path,content=data["news_content"],user=user,tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=True);
+			news = News.objects.create(title=data["title"],coverimage=media_path,content=data["news_content"],user=user,tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=True,fb_id=fb_id);
 			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,user=user);
 			return HttpResponseRedirect('/news/'+str(news.slug)+'/article'+str(news.id)+'.htm')
 

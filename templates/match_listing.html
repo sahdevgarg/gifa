@@ -30,8 +30,8 @@
          </div>
       <div class="clearfix"></div>
       <ul class="region nav nav-tabs" style="padding-left: 20px;">
-      <li class="active"><a href="#home" data-toggle="tab" style="padding: 10px 30px;">Delhi</a></li>
-      <li><a href="#profile" data-toggle="tab">Gurgaon</a></li>
+      <li {% if city == "Delhi" %} class="active"{% endif%}><a href="/matches.htm?city=Delhi"  style="padding: 10px 30px;">Delhi</a></li>
+      <li {% if city == "Gurgaon" %} class="active"{% endif%}><a href="/matches.htm?city=Gurgaon">Gurgaon</a></li>
       </ul>
 
 </div>
@@ -48,21 +48,34 @@
 
   <div class="col-lg-9 col-md-8 news-detail">
 
-<h2>Matches</h2>
+<h2>{{city}} Matches</h2>
 
-<hr/>
-<br/><br/>
+<br/>
+{% if match_list %}
 <h4>{{match_list.0.match_date|date:"F d, Y"}}</h4>
 {% with match_list|slice:"0:40" as match_list%}
 {% include "matchlist_data.html"%}
 {% endwith %}
-
-
-
-
-
-
-
+ {% if page_list|length > 1%}
+      <div style="text-align:center; padding: 10px;">
+      {% if match_list.number != page_list|first  %}
+      <a href="?page={{match_list.previous_page_number}}">< Previous</a>
+      {% endif %}
+    {% for page in page_list%}
+      {% if page == match_list.number %}
+      <a href="?page={{page}}" style="color:black">{{page}}</a>
+      {% else %}
+      <a href="?page={{page}}">{{page}}</a>
+      {% endif %}
+    {% endfor %}
+    {% if match_list.number != page_list|last  %}
+      <a href="?page={{match_list.next_page_number}}">Next ></a>
+      {% endif %}
+    </div>
+    {% endif %}
+{% else %}
+<p>No Matches</p>
+{% endif %}
   </div>
 
 

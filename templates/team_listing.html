@@ -60,7 +60,7 @@
       <th class="sort" data-sort="draw" >Draw</th>
       <th class="sort" data-sort="win" >Wins</th>
       <th class="sort" data-sort="loss" >Loss</th>
-      <th class="sort" data-sort="city">City</th>
+      <th class="sort" data-sort="group">Group</th>
     </tr>
   </thead>
   <tbody class="list">
@@ -73,7 +73,11 @@
       <td class="draw">1</td>
       <td class="win" >8</td>
       <td class="loss">1</td>
-      <td class="city">{{team.city|title}}</td>
+      {% if team.team_group == 1%}
+      <td class="group">Senior</td>
+      {% else %}
+      <td class="group">Junior</td>
+      {% endif %}
     </tr>
   {% endfor %}
   </tbody>

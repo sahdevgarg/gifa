@@ -13,7 +13,7 @@ class News(models.Model):
     content = models.TextField(blank=True, help_text=_("1: Styling should not be applied on empty paragraphs and para containing image or iframe.<br/> 2: Font Size -> Bold behaves different from Bold -> Font Size (First apply size then bold)"))
     coverimage = models.CharField(max_length=200)
     team_a = models.ForeignKey(Teams,related_name="Team A+")
-    # fb_id = models.CharField(_('fb_id'), max_length=255,blank=True)
+    fb_id = models.CharField(_('fb_id'), max_length=255,blank=True)
     team_b = models.ForeignKey(Teams,related_name="Team B+",null=True,blank=True)
     tags = models.CharField(_('tags'), max_length=255,blank=True)
     seo_desc = models.TextField(blank=True)

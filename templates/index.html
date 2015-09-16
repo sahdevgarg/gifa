@@ -24,11 +24,11 @@
               <h3 itemprop="name" style="margin-top:10px">{{news.title}}</h3></a>
               <p>{{news.content|removetags:'p img'|safe|truncatechars:200}}</p></a>
               <ul class="list-inline">
-              <li>By <a href="">{{news.user}}</a></li>
-              <li class="pull-right"><a href="#">
+              <li>By <a {% if news.fb_id %}href="{{news.fb_id}}"{%else%}href="#"{% endif %}>{{news.user}}</a></li>
+              <!-- <li class="pull-right"><a href="#">
               <i class="fa fa-comment"></i> 2</a></li>
               <li class="pull-right"><a href="#">
-              <i class="fa fa-facebook"></i> 14</a></li>
+              <i class="fa fa-facebook"></i> 14</a></li> -->
               </ul>
             </div>
     
@@ -47,11 +47,8 @@
         <h4 class="media-heading"><a href="{{news_url}}">{{news.title}}</a></h4>
         <p>{{news.content|removetags:'p img div'|safe|truncatechars:200}}</p>
         <ul class="list-inline">
-              <li>By <a href="#">{{news.user}}</a></li>
-              <li class="pull-right"><a href="#">
-              <i class="fa fa-comment"></i> 2</a></li>
-              <li class="pull-right"><a href="#">
-              <i class="fa fa-facebook"></i> 14</a></li>
+              <li>By <a {% if news.fb_id %}href="{{news.fb_id}}"{%else%}href="#"{% endif %}>{{news.user}}</a></li>
+              
         </ul>
       </div>
     </div>

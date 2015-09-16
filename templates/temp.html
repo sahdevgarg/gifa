@@ -1,0 +1,29 @@
+
+<table class="table table-striped table-hover match-table">
+  <thead>
+    <tr>
+      <th><span class="label label-danger">Current</span></th>
+      {% for match in match_list%}
+      <th>Match {{match.match_no}}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr class="success">
+      <td><p> Slot {{match_list.0.slot_no}}</p>
+      <p>3:30 pm - 4:00 pm</p></td>
+        {% for match in match_list%}
+        {% if match.team_a %}
+        <td><a class="team-name" href="{{match.team_a.get_absolute_url}}">{{match.team_a}}</a> vs <a class="team-name" href="{{match.team_b.get_absolute_url}}">{{match.team_b}}</a></td>
+        
+        {% else %}
+      <td>No Match</td>
+      {% endif %}
+        {% endfor %}
+      
+    </tr>
+    
+  </tbody>
+  
+</table> 

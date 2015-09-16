@@ -198,6 +198,24 @@ body {
       margin-bottom:10px;
     }
 
+    .navbar-header .navbar-right li a {
+    display: inline-block;
+    margin-bottom: 10px;
+    }
+
+    .post-content { overflow-x: hidden;
+        word-wrap: break-word;
+        }
+
+    div#links a {
+      width: 49%;
+      padding: 4px !important;
+      }
+      div#links a img {
+      width: 100%;
+      height: auto;
+      }
+
 }
  .region.nav-tabs > li > a {color: #fff}
  .region.nav-tabs > li.active > a,.region.nav-tabs > li:hover > a {color: #222}
@@ -206,4 +224,10 @@ width: 100%;
 height: auto;
 }
 .post-content {margin-bottom: 40px;}
-iframe { display: block; }
+iframe { display: block;
+          width:100%;
+           }
+
+
+
+

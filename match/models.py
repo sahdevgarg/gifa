@@ -10,10 +10,12 @@ class Match(models.Model):
 	Represents a Match. Stores all details related to a Match.
 	"""
 	match_no = models.PositiveIntegerField(unique=False,blank=False,verbose_name=_('Match no* '))
-	team_a = models.ForeignKey(Teams,related_name="Team A+")
-	team_b = models.ForeignKey(Teams,related_name="Team B+")
+	team_a = models.ForeignKey(Teams,related_name="Team A+",null=True,blank=True)
+	team_b = models.ForeignKey(Teams,related_name="Team B+",null=True,blank=True)
 	venue = models.CharField(max_length=255, blank=True)
-	schedule = models.DateField(_("Date"))
+	city = models.CharField(max_length=190, blank=False)
+	schedule = models.DateField(_("match Date time"))
+	match_date = models.DateField(_("Match Date"))
 	result_type = models.IntegerField( choices=RESULT_LIST_TYPES, blank=False, null=False, verbose_name=_('result type*'),help_text=_("Result Type type 1:match scheduled, 2: match with result,3: match with draw,4: match canceled"))
 	team_a_goal = models.IntegerField(_('Team A Goal'),default=0)
 	schedule =  models.DateTimeField(_('Scheduled Date'))

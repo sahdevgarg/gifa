@@ -51,109 +51,16 @@
 <h2>Matches</h2>
 
 <hr/>
-
-<h4>September 26, 2015</h4>
-
-<table class="table table-striped table-hover match-table">
-  <thead>
-    <tr>
-      <th> <span class="label label-danger">Current</span></th>
-      <th>Match 1</th>
-      <th>Match 2</th>
-      <th>Match 3</th>
-      <th>Match 4</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="success">
-      <td><p>Slot 1</p>
-      <p>3:30 pm - 4:00 pm</p></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-    </tr>
-    
-  </tbody>
-</table> 
-
-
-<table class="table table-striped table-hover ">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th>Match 5</th>
-      <th>Match 6</th>
-      <th>Match 7</th>
-      <th>Match 8</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Slot 2</td>
-      <td>4:10 pm - 4:40 pm</td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-    </tr>
-    
-  </tbody>
-</table> 
-
 <br/><br/>
-
-<h4>September 27, 2015</h4>
-
-<table class="table table-striped table-hover ">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th>Match 1</th>
-      <th>Match 2</th>
-      <th>Match 3</th>
-      <th>Match 4</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Slot 1</td>
-      <td>3:30 pm - 4:00 pm</td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-    </tr>
-    
-  </tbody>
-</table> 
+<h4>{{match_list.0.match_date|date:"F d, Y"}}</h4>
+{% with match_list|slice:"0:40" as match_list%}
+{% include "matchlist_data.html"%}
+{% endwith %}
 
 
-<table class="table table-striped table-hover ">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th>Match 5</th>
-      <th>Match 6</th>
-      <th>Match 7</th>
-      <th>Match 8</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Slot 2</td>
-      <td>4:10 pm - 4:40 pm</td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-      <td><a class="team-name" href="team-details.html">56ers</a> vs <a class="team-name" href="team-details.html">7 united</a></td>
-    </tr>
-    
-  </tbody>
-</table> 
+
+
+
 
 
   </div>

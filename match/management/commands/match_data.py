@@ -7,85 +7,69 @@ import os
 import csv
 from django.db import transaction
 from teams.models import Teams
+from match.models import Match
 from datetime import datetime
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        f = open("date.txt")
+        f = open("Gurgaon4.txt")
         reader = csv.reader(f)
-        date = "2015-09-26"
+        date = "2015-10-04"
         j=1
         for row in f.readlines():
             data = row.split('\t')
             if data[0] == 'Slot 1':
                 dt = date +", "+"15:30"
                 c = datetime.strptime(str(dt),"%Y-%m-%d, %H:%M")
-                self.save_data(data,1,c)
+                self.save_data(1,data,1,c,date)
             elif data[0] == 'Slot 2':
                 dt = date +", "+"16:10"
                 c = datetime.strptime(str(dt),"%Y-%m-%d, %H:%M")
-                self.save_data(data,5,c)
+                self.save_data(2,data,5,c,date)
             elif data[0] == 'Slot 3':
                 dt = date +", "+"16:50"
                 c = datetime.strptime(str(dt),"%Y-%m-%d, %H:%M")
-                self.save_data(data,9,c)
+                self.save_data(3,data,9,c,date)
             elif data[0] == 'Slot 4':
                 dt = date +", "+"17:30"
                 c = datetime.strptime(str(dt),"%Y-%m-%d, %H:%M")
-                self.save_data(data,13,c)
+                self.save_data(4,data,13,c,date)
             elif data[0] == 'Slot 5':
                 dt = date +", "+"18:10"
                 c = datetime.strptime(str(dt),"%Y-%m-%d, %H:%M")
-                self.save_data(data,17,c)
+                self.save_data(5,data,17,c,date)
             elif data[0] == 'Slot 6':
                 dt = date +", "+"18:50"
                 c = datetime.strptime(str(dt),"%Y-%m-%d, %H:%M")
-                self.save_data(data,21,c)
+                self.save_data(6,data,21,c,date)
             elif data[0] == 'Slot 7':
                 dt = date +", "+"19:30"
                 c = datetime.strptime(str(dt),"%Y-%m-%d, %H:%M")
-                self.save_data(data,25,c)
+                self.save_data(7,data,25,c,date)
             elif data[0] == 'Slot 8':
                 dt = date +", "+"20:10"
                 c = datetime.strptime(str(dt),"%Y-%m-%d, %H:%M")
-                self.save_data(data,29,c)
+                self.save_data(8,data,29,c,date)
             elif data[0] == 'Slot 9':
                 dt = date +", "+"20:50"
                 c = datetime.strptime(str(dt),"%Y-%m-%d, %H:%M")
-                self.save_data(data,33,c)
+                self.save_data(9,data,33,c,date)
             elif data[0] == 'Slot 10':
                 dt = date +", "+"21:30"
                 c = datetime.strptime(str(dt),"%Y-%m-%d, %H:%M")
-                self.save_data(data,37,c)
+                self.save_data(10,data,37,c,date)
 
 
-    def save_data(self,data,j,c):
+    def save_data(self,slot,data,j,c,match_date):
         print data
+        city="Gurgaon"
         for i in range(2,9,2):
-            team_a = Teams.objects.get(team_name=data[i].replace("\r\n",""))
-            team_b = Teams.objects.get(team_name=data[i+1].replace("\r\n",""))
-            #match = Match.objects.create(match_no=j,team_a=team_a,team_b=team_b,schedule=c,result_type=1)
+            if data[i] and data[i+1]:
+                team_a = Teams.objects.get(team_name=str(data[i]).replace("\r\n",""))
+                team_b = Teams.objects.get(team_name=str(data[i+1]).replace("\r\n",""))
+            else:
+                team_a = None
+                team_b = None
+            match = Match.objects.create(slot_no=slot,match_no=j,team_a=team_a,team_b=team_b,schedule=c,result_type=1,city=city,match_date=match_date)
             j=j+1
             print "#########"
-
-                
-            # team = Teams.objects.create(team_name=team_name,city=team_city,team_email=team_email,team_manager=team_man,team_manager_email=team_man_email,team_manager_mob=team_mob,locality=locality,team_group='2')
-            # for i in range(0,10,1):
-            #     print i
-
-            #     name = data[i*18+8]
-            #     email = data[i*18+9]
-                
-            #     if data[i*18+10] == "Male":
-            #         gendre = '1'
-            #     else:
-            #         gendre = '2'
-            #     mobile_no = data[i*18+11]
-            #     address = data[i*18+12]
-            #     if (data[i*18+21] != "dummy" and data[i*18+21] != ""):
-            #         image = os.path.join(settings.MEDIA_URL, (data[i*18+21]+".jpg"))
-            #     else:
-            #         image = None
-            #     print name,email,gendre,mobile_no,address,image
-            #     print "**********************************"
-            #     player = Player.objects.create(name=name,team=team,email=email,gendre=gendre,mobile_no=mobile_no,address=address,image=image,team_group='2')

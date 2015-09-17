@@ -11,7 +11,14 @@
   <div class="row" style="  border-top: 1px solid #ddd;   padding-top: 20px;">
 
   <div class="col-lg-9 col-md-8 left-more-news">
-  <h3 style="margin-top:0;">News</h3>
+  <ul class="nav nav-pills">
+  <li {% if content == "news" %}class="active"{% endif %}>
+  <a href="/profile/{{request.user.first_name|lower}}/{{request.user.id}}.htm?content=news">Uploaded News
+  </a></li>
+  <li {% if content == "image" %}class="active"{% endif %}><a href="/profile/{{request.user.first_name|lower}}/{{request.user.id}}.htm?content=image">Uploaded Images</a></li>
+  </ul>
+  {% if content == "news"%}
+  {% if news_list%}
   {% for news in news_list %}
   {% with news.get_absolute_url as news_url%}
   <div class="media">
@@ -24,20 +31,54 @@
         <h4 class="media-heading"><a href="{{news_url}}">{{news.title}}</a></h4>
         {{news.content|removetags:'p img div'|safe|truncatechars:200}}
         {% if news.rejected %}
-        <p>Your Article is Rejected </p>
+        <h3><span class="label label-danger">Your Article Is Rejected</h3>
         <p>{{news.comment}}</p>
-        <a href="{{news_url}}?preview=True">Edit Here</a>
+        <a href="/edit/article{{news.id}}.htm" class="btn btn-warning btn-xs">Edit Article</a>
         {% else %}
         {% if news.enabled %}
-          <p>This article is published</p>
+          <h3><span class="label label-success">Your Article Is Published</span></h3>
         {% else %}
-        <p> Article is in moderation state</p>
+        <h3><span class="label label-warning">Your Article Is Under Moderation</h3>
         {% endif %}
         {% endif %}
       </div>
     </div>
     {% endwith %}
     {% endfor %}
+    {% else %}
+            <h3><span class="label label-warning">Click On Top Right To Write An Article</h3>
+
+    {% endif %}
+    {% endif %}
+
+  {% if content == "image"%}
+  {% if image_list%}
+  {% for image in image_list %}
+  <div class="media">
+      <div class="media-left">
+          <img class="media-object center-cropped" src="{{image.image}}" data-holder-rendered="true">
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{image.title}}</h4>
+        {% if image.rejected %}
+        <h3><span class="label label-danger">Your Image is Rejected</h3>
+        {% else %}
+        {% if image.enabled %}
+          <h3><span class="label label-success">Your Image is published</span></h3>
+        {% else %}
+        <h3><span class="label label-warning">Your Image Is Under Moderation</h3>
+        {% endif %}
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+            <h3><span class="label label-warning">Click On Top Right To Upload An Image</h3>
+
+    {% endif %}
+    {% endif %}
+
+
      
   </div>
 

@@ -6,9 +6,9 @@ from player.serializers import PlayerListingSerializer
 import json
 
 class TeamsListingSerializer(serializers.ModelSerializer):
-	url = serializers.SerializerMethodField()
 	class Meta:
 		model = Teams
+		fields = ('id', 'team_name', 'total_points','games_played','total_goal')
 
 	def get_url(self, obj):
 		return obj.get_absolute_url()

@@ -1,7 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from teams.models import Teams
 from image.models import Image
-from match.models import Match
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
@@ -9,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.views.generic import TemplateView
 from django.core.files import File
+from gifa.views import JSONView
 import uuid
 import os
 
@@ -31,6 +31,8 @@ class Imageview(TemplateView):
 		except:
 			team = None
 		user = get_user_model().objects.get(email=request.user.email)
+		done = request.POST.get('done', False)
+		submit = request.POST.get('save', False)
 		name = u'{name}.{ext}'.format(
 	        name=uuid.uuid4().hex,
 	        ext=os.path.splitext(request.FILES['image'].name)[1].strip('.')
@@ -40,8 +42,12 @@ class Imageview(TemplateView):
 		destination = open(image_path, 'wb+')
 		for chunk in request.FILES['image'].chunks():
 		        destination.write(chunk)
-		news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user);
-		return HttpResponseRedirect('/gallery.htm')
+		if submit:
+			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user);
+			return HttpResponseRedirect('/gallery.htm')
+		if done:
+			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user,enabled=False);
+			return HttpResponseRedirect('/profile/'+(self.request.user.first_name).lower()+'/'+str(self.request.user.id)+'.htm')
 	@csrf_exempt
 	def dispatch(self, *args, **kwargs):
 		return super(Imageview, self).dispatch(*args, **kwargs)
@@ -50,7 +56,7 @@ class ImageListview(TemplateView):
 	template_name = "gallery.html"
 	def get(self,*args, **kwargs):
 		context = super(ImageListview, self).get_context_data(**kwargs)
-		image_list = Image.objects.all();
+		image_list = Image.objects.filter(enabled=True).order_by('-modified_date');
 		paginator = Paginator(image_list, 20)
 		page = self.request.GET.get('page',"")
 		try:
@@ -59,3 +65,41 @@ class ImageListview(TemplateView):
 			context["image_list"]  = paginator.page(1)
 		context["page_list"] = paginator.page_range
 		return self.render_to_response(context)
+
+class ImageapprovalView(TemplateView):
+	template_name = "image_approval.html"
+	def get(self,*args, **kwargs):
+		context = super(ImageapprovalView, self).get_context_data(**kwargs)
+		if not self.request.user.is_superuser:
+			return HttpResponseRedirect('/') 
+		image_list = Image.objects.filter(enabled=False,rejected=False).order_by('-modified_date')
+		paginator = Paginator(image_list, 10)
+		page = self.request.GET.get('page',"")
+		if page:
+			context["image_list"] = paginator.page(page)
+		else:
+			context["image_list"] = paginator.page(1)
+		context["page_list"] = paginator.page_range
+		return self.render_to_response(context)
+
+class SaveImage(JSONView):
+
+    def get(self, *args, **kwargs):
+		context = super(SaveImage, self).get_context_data(**kwargs)
+		image_id = self.request.GET.get('image_id',"")
+		try:
+			image = Image.objects.filter(id=image_id).update(enabled=True);
+			return HttpResponseRedirect('/approve-image.htm')
+		except:
+			return HttpResponseRedirect('/')
+
+class RejectImage(JSONView):
+
+    def get(self, *args, **kwargs):
+		context = super(RejectImage, self).get_context_data(**kwargs)
+		image_id = self.request.GET.get('image_id',"")
+		try:
+			image = Image.objects.filter(id=image_id).update(rejected=True,enabled=False);
+			return HttpResponseRedirect('/approve-image.htm')
+		except:
+			return HttpResponseRedirect('/')

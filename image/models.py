@@ -14,6 +14,7 @@ class Image(models.Model):
     tags = models.CharField(_('tags'), max_length=255,blank=True)
     user = models.ForeignKey(User,verbose_name=_('Author'))
     enabled = models.BooleanField(default=True)
+    rejected = models.BooleanField(default=False)
     created_date = models.DateTimeField(_('Created Date'), auto_now_add=True)
     modified_date = models.DateTimeField(_('Modified Date'), auto_now=True)
     def __unicode__(self):

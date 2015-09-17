@@ -5,12 +5,7 @@
     <div class="container" style="background-color:#D6D6D6;margin: 4%;height: 90px;position: absolute;top: 0;z-index: 99999;margin-top: 0;left: 4px;margin-top: 51px;">
       <center style="font-size:21px">This is a preview copy </center>
      
-      <a style="width: 283px;
-    padding: 10px;
-    border: 1px solid #100F0F;
-    margin: 0;
-    background-color: #C2C6CA;
-    font-size: 15px;"href="/edit/article{{news.id}}.htm">Edit</a>
+      
     {% if request.user.is_superuser %}
       <a style="width: 283px;
     padding: 10px;
@@ -25,6 +20,12 @@
     background-color: #C2C6CA;
     font-size: 15px;"href="/api/news_reject/?news_id={{news.id}}">Reject</a>
     {% else %}
+    <a style="width: 283px;
+    padding: 10px;
+    border: 1px solid #100F0F;
+    margin: 0;
+    background-color: #C2C6CA;
+    font-size: 15px;"href="/edit/article{{news.id}}.htm">Edit</a>
     <a style="width: 283px;
     padding: 10px;
     border: 1px solid #100F0F;

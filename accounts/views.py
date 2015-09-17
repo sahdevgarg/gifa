@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from gifa.views import JSONView
+from image.models import Image
 from django.http import HttpResponseRedirect
 from django.contrib.auth import get_user_model
 from django.http import HttpResponseRedirect
@@ -41,7 +42,12 @@ class UserDetailView(TemplateView):
     def get(self,*args, **kwargs):
         context = super(UserDetailView, self).get_context_data(**kwargs)
         user = get_user_model().objects.get(id=context["user_id"]);
-        print user,self.request.user
-        context["news_list"] = News.objects.filter(user= self.request.user.id)
-        print "aaaaa",context["news_list"]
+        content = self.request.GET.get('content','news');
+        context['content']=content;
+        if self.request.user != user:
+            return  HttpResponseRedirect('/')
+        if content == "image":
+            context["image_list"] = Image.objects.filter(user= self.request.user.id).order_by('-modified_date')
+        else :
+            context["news_list"] = News.objects.filter(user= self.request.user.id).order_by('-modified_date')
         return self.render_to_response(context)

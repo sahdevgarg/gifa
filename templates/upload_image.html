@@ -54,7 +54,12 @@
         </div>
             <div class="form-group">
               <div class="col-lg-10 col-lg-offset-2">
+                {% if request.user.is_superuser %}
                 <button type="submit" name="save" value="True" class="btn btn-primary">Save</button>
+                {% else %}
+                <button type="submit" name="done" value="True" class="btn btn-primary">Done</button>
+                {% endif %}
+
                 <a href="/" class="btn btn-default" style="float:right">Cancel</a>
               </div>
             </div>

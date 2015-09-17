@@ -3,6 +3,7 @@ body {
       font-family: 'Roboto', sans-serif;
          background: url(../image/child-bg-web.jpg) no-repeat center center fixed;
          background-size: cover;
+         margin-top :40px;
     }
 
     

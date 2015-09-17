@@ -41,7 +41,6 @@
 
     <div class="navbar-collapse collapse" id="htgifa-menubar" aria-expanded="true">
       <ul class="nav navbar-nav">
-        <li {% if html_id == "opening" %}class="active"{% endif %}><a href="/opening-ceremony.htm">Opening Ceremony</a></li>
         <li {% if html_id == "news"%}class="active"{% endif %}><a href="/news/listing.htm">News</a></li>
         <li {% if html_id == "match" %}class="active"{% endif %}><a href="/matches.htm">Matches</a></li>
         <li {% if html_id == "team" %}class="active"{% endif %}><a href="/teams/listing.htm">Teams</a></li>
@@ -51,8 +50,12 @@
       <ul class="nav navbar-nav navbar-right" style="    margin-top: 10px;">
       {% if request.user.is_superuser %}
        <li style="    margin-right: 10px;">
-          <a href="/pending_article.htm" class="btn btn-danger btn-sm " style="font-size: 14px; padding:5px 10px">
+          <a href="/approve-article.htm" class="btn btn-danger btn-sm " style="font-size: 14px; padding:5px 10px">
             <span class="fa fa-edit" aria-hidden="true" style="margin-right: 5px;"></span><span class=" ">Pending Article</span></a>
+          </li>
+         <li style="    margin-right: 10px;">
+          <a href="/approve-image.htm" class="btn btn-danger btn-sm " style="font-size: 14px; padding:5px 10px">
+            <span class="fa fa-edit" aria-hidden="true" style="margin-right: 5px;"></span><span class=" ">Pending Images</span></a>
           </li>
       {% endif %}
       {% if request.user.is_authenticated %}
@@ -69,7 +72,7 @@
             <img id="fb_image" src="http://placehold.it/32x32" height="32px" width="32px">
             <span class="caret"></span></a>
           <ul class="dropdown-menu pull-right" role="menu">
-                <li><a href="/profile/{{request.user.first_name}}/{{request.user.id}}.htm"> {{request.user.first_name}} {{request.user.last_name}}</a></li>
+                <li><a href="/profile/{{request.user.first_name|lower}}/{{request.user.id}}.htm"> {{request.user.first_name}} {{request.user.last_name}}</a></li>
                 <li class="divider"></li>
                 <li><a href="/api/logout_user/">Logout</a></li>
               </ul>

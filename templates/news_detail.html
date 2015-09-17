@@ -7,31 +7,11 @@
      
       
     {% if request.user.is_superuser %}
-      <a style="width: 283px;
-    padding: 10px;
-    border: 1px solid #100F0F;
-    margin: 0;
-    background-color: #C2C6CA;
-    font-size: 15px;"href="/api/news_enable/?news_id={{news.id}}">Submit</a>
-    <a style="width: 283px;
-    padding: 10px;
-    border: 1px solid #100F0F;
-    margin: 0;
-    background-color: #C2C6CA;
-    font-size: 15px;"href="/api/news_reject/?news_id={{news.id}}">Reject</a>
+      <a href="/api/news_enable/?news_id={{news.id}}" class="btn btn-success">Submit</a>
+      <a href="/api/news_reject/?news_id={{news.id}}" class="btn btn-danger">Reject</a>
     {% else %}
-    <a style="width: 283px;
-    padding: 10px;
-    border: 1px solid #100F0F;
-    margin: 0;
-    background-color: #C2C6CA;
-    font-size: 15px;"href="/edit/article{{news.id}}.htm">Edit</a>
-    <a style="width: 283px;
-    padding: 10px;
-    border: 1px solid #100F0F;
-    margin: 0;
-    background-color: #C2C6CA;
-    font-size: 15px;"href="/">Done</a>
+    <a href="/edit/article{{news.id}}.htm" class="btn btn-warning">Edit</a>
+    <a href="/profile/{{request.user.first_name|lower}}/{{request.user.id}}.htm" class="btn btn-success">Done</a>
     {% endif %}
   
       </div>

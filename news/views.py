@@ -171,7 +171,7 @@ class RejectNews(JSONView):
 		news_id = self.request.GET.get('news_id',"")
 		try:
 			news = News.objects.filter(id=news_id).update(rejected=True,enabled=False);
-			return HttpResponseRedirect('/pending_article.htm')
+			return HttpResponseRedirect('/approve-article.htm')
 		except:
 			return HttpResponseRedirect('/')
 

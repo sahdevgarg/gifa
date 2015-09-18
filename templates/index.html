@@ -14,7 +14,7 @@
 <div class="row" style="  border-top: 1px solid #ddd;   padding-top: 20px;">
 
 <div class="col-lg-6 col-md-8 left-more-news">
-
+<h3 style="margin-top:0px"> Latest News</h3>
   {% with news_list.0 as news %}
             <div class="main-featured-item" style="border-bottom:1px dotted #ccc">
               <a href="{{news.get_absolute_url}}">
@@ -22,7 +22,7 @@
               </a>
               <a href="{{news.get_absolute_url}}">
               <h3 itemprop="name" style="margin-top:10px">{{news.title}}</h3></a>
-              <p>{{news.content|removetags:'p img'|safe|truncatechars:200}}</p></a>
+              <p>{{news.content|striptags|truncatechars:200}}</p></a>
               <ul class="list-inline">
               <li>By <a {% if news.fb_id %}href="{{news.fb_id}}"{%else%}href="#"{% endif %}>{{news.user}}</a></li>
               <!-- <li class="pull-right"><a href="#">
@@ -79,110 +79,23 @@
     <tr>
       <th>Pos</th>
       <th>Team</th>
-      <th>P</th>
-      <th>GD</th>
-      <th>Pts</th>
+      <th>Gp</th>
+      <th>W</th>
+      <th>L</th>
+      <th>D</th>
     </tr>
   </thead>
   <tbody>
+  {% for team in teams_list%}
     <tr>
-      <td>1</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
+      <td>{{forloop.counter}}.</td>
+      <td><a href="{{team.get_absolute_url}}">{{team.team_name|title}}</a></td>
+      <td>{{team.games_played}}</td>
+      <td>{{team.win}}</td>
+      <td>{{team.loss}}</td>
+      <td>{{team.draw}}</td>
     </tr>
-    <tr>
-      <td>2</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Team A</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
+  {% endfor %}
 </tbody>
 </table>
     

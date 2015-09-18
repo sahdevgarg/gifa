@@ -32,6 +32,9 @@
     <div class="news_metadata">
       By <a {% if news.fb_id %}href="{{news.fb_id}}"{%else%}href="#"{% endif %}>{{news.user}}</a>
       <p class="news_time">{{news.created_date}}</p>
+      <span class='st_googleplus_large' displayText='Google +'></span>
+      <span class='st_twitter_large' displayText='Tweet'></span>
+      <span class='st_facebook_large' displayText='Facebook'></span>
     </div>
 
       <img style="width:100%;" class="img-responsive" src="{{news.coverimage}}" alt="">
@@ -87,3 +90,8 @@
     <!-- /.container -->
 </div>
 {% endblock content%}
+{% block javascript%}
+{{block.super}}
+   <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "7d1da0ea-8d30-4c1a-b2a4-e23bfeac9ec9", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+{% endblock javascript%}

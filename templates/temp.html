@@ -2,37 +2,43 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">Slot {{match_list.0.slot_no}} {{time}}</div>
-  <div class="panel-body">
-  <div class="panel panel-default">
+  <div class="panel-body" style="padding:0px ;background:rgba(0,0,0,0.1);">
         
       {% for match in match_list%}
-      <div class="col-lg-3">
+      <div class="col-lg-5 col-md-5 col-sm-6 panel panel-default slot-match" style="margin:10px; padding:0px">
+        <div class="panel-body" style="text-align: center">
+
 
         Match {{match.match_no}}
         {% if match.team_a %}
            <h5><a class="team-name" href="{{match.team_a.get_absolute_url}}">{{match.team_a|title}}</a></h5>
             vs 
             <h5><a class="team-name" href="{{match.team_b.get_absolute_url}}">{{match.team_b|title}}</a></h5>
+            </div>
+            {% if match.result_type != 1 %}
             {% if match.result_type == 2 or match.result_type == 3 %}
-            <h5> Score {{match.team_a_goal}} - {{match.team_b_goal}}
+            <div class="panel-footer" style="background:#6D9F36;text-align: center">
+            <h5 style="color: #fff;"> Score {{match.team_a_goal}} - {{match.team_b_goal}}
             {% endif %}
-            {% if match.result_type == 1 %}
-            <h5>Yet To Play</h5>
-            {% elif match.result_type == 2 %}
-            <h5>{{match.winning_team.team_name|title}} Win</h5>
+            {% if match.result_type == 2 %}
+            <h5 style="color: #fff;">{{match.winning_team.team_name|title}} Win</h5>
             {% elif match.result_type == 3 %}
-            <h5> Match Is Draw</h5>
+            <h5 style="color: #fff;"> Match Is Draw</h5>
             {% elif match.result_type == 3 %}
-            <h5> Match is abandoned</h5>
+            <div class="panel-footer" style="background:#C71C22;text-align: center">
+            <h5 style="color: #fff;"> Match Is Canceled</h5>
             {% endif %}
-
+            </div>
+            {% endif %}
         
         {% else %}
       <h5> No Match </h5>
+      </div>
       {% endif %}
+      
       </div>
         {% endfor %}
-         </div>
+         
         </div>
   </div>
 

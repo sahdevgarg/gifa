@@ -11,6 +11,7 @@
   <div class="row" style="  border-top: 1px solid #ddd;   padding-top: 20px;">
 
   <div class="col-lg-9 col-md-8 left-more-news">
+  {% if news_list %}
   <h3 style="margin-top:0;">Latest News</h3>
   {% for news in news_list %}
   {% with news.get_absolute_url as news_url%}
@@ -22,7 +23,7 @@
       </div>
       <div class="media-body">
         <h4 class="media-heading"><a href="{{news_url}}">{{news.title}}</a></h4>
-        {{news.content|removetags:'p img div'|safe|truncatechars:200}}
+        {{news.content|striptags|safe|truncatechars:200}}
         
         <ul class="list-inline"><li>By <a {% if news.fb_id %}href="{{news.fb_id}}"{%else%}href="#"{% endif %}>{{news.user}}</a>
        <!--  </li><li class="pulls-right"><a href="#"><i class="fa fa-comment"></i> 2</a></li><li class="pull-right"><a href="#"><i class="fa fa-facebook"></i> 14</a></li></ul>
@@ -49,7 +50,9 @@
       {% endif %}
     </div>
     {% endif %}
-     
+     {% else %}
+       <img title="opening ceremony" width="100%" src="{{STATIC_URL}}image/gifaopening.jpg">
+     {% endif %}
   </div>
 
 
@@ -66,13 +69,7 @@
        
     </div>
      </div>
-        <footer style="    background:rgba(0,0,0, 0.1); height: 250px; padding: 20px 0px;">
-            <div class="container">
-                <div class="col-lg-12">
-                    <p>Copyright © HT Media 2015</p>
-                </div>
-            </div>
-        </footer>
+        {% include "footer.html"%}
 
 
 

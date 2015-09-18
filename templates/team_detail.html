@@ -27,7 +27,7 @@
 
 
       <div class="">
-          <img style="width:128px; height: 128px;" class="media-object" src="{{STATIC_URL}}image/dummy.png" data-holder-rendered="true" title="{{team.team_manager}}" alt="{{team.team_manager}}">
+          <img style="width:128px; height: 128px;" class="media-object" src="{{STATIC_URL}}image/user.png" data-holder-rendered="true" title="{{team.team_manager}}" alt="{{team.team_manager}}">
 
       </div>
       <div class="" style="margin-top:10px;">
@@ -77,7 +77,7 @@
 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" style="margin-bottom: 40px; height:190px">
     <div style="padding:10px; border: 1px solid #ddd; ">
       <div style="">
-          <img style="width:128px; height: 128px;" class="media-object" src="/media/dummy.png" data-holder-rendered="true">
+          <img style="width:128px; height: 128px;" class="media-object" src="{{STATIC_URL}}image/user.png" data-holder-rendered="true">
       
       </div>
       <div class="" style="margin-top:10px;">
@@ -87,21 +87,12 @@
 </div>
 {% endfor %}
 
-
-<div class="col-lg-3  col-md-4">
-
 </div>
-       
     </div>
-     </div>
-        <footer style="    background:rgba(0,0,0, 0.1); height: 250px; padding: 20px 0px;">
-            <div class="container">
-                <div class="col-lg-12">
-                    <p>Copyright © HT Media 2015</p>
-                </div>
-            </div>
-        </footer>
 
+{% include "footer.html"%}
+     </div>
+</div>
 
 
    

@@ -41,6 +41,7 @@ urlpatterns = [
     url(r'^api/news_reject/',RejectNews.as_view()),
     url(r'^api/image_enable/',SaveImage.as_view()),
     url(r'^api/image_reject/',RejectImage.as_view()),
+    url(r'^sponsers.htm',TemplateView.as_view(template_name="sponsers.html")),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.STATIC_ROOT}),
 
     

@@ -1,7 +1,7 @@
 
 
 <div class="panel panel-default">
-  <div class="panel-heading">Slot {{match_list.0.slot_no}} {{time}}</div>
+  <div class="panel-heading"><b>Slot {{match_list.0.slot_no}}</b> <span class="pull-right">{{time}}</span></div>
   <div class="panel-body" style="padding:0px ;background:rgba(0,0,0,0.1);">
         
       {% for match in match_list%}
@@ -24,7 +24,7 @@
             <h5 style="color: #fff;">{{match.winning_team.team_name|title}} Win</h5>
             {% elif match.result_type == 3 %}
             <h5 style="color: #fff;"> Match Is Draw</h5>
-            {% elif match.result_type == 3 %}
+            {% elif match.result_type == 4 %}
             <div class="panel-footer" style="background:#C71C22;text-align: center">
             <h5 style="color: #fff;"> Match Is Canceled</h5>
             {% endif %}

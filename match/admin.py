@@ -7,7 +7,7 @@ from django.db.models import Sum
 
 class MatchAdmin(admin.ModelAdmin):
     list_display = ("match_no","team_a","team_b","venue","schedule","result_type","team_a_goal","team_b_goal","enabled","winning_team")
-
+    search_fields = ['team_b','team_a']
     def save_model(self, request, obj, form, change):
         super(MatchAdmin, self).save_model(request, obj, form, change)
         team_a = Teams.objects.get(id=obj.team_a.id)

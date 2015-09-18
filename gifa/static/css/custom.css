@@ -289,3 +289,8 @@ code {
         */
         #no-more-tables td:before { content: attr(data-title); }
         }
+
+        footer object {
+          display: block;
+          margin: 20px auto;
+          }

@@ -72,9 +72,9 @@
       <td class="name"><a href="{{team.get_absolute_url}}">{{team.team_name|title}}</a></td>
       <td class="manager">{{team.team_manager|title}}</td>
       <td class="game">{{team.games_played}}</td>
-      <td class="draw">1</td>
-      <td class="win" >8</td>
-      <td class="loss">1</td>
+      <td class="draw">{{team.draw}}</td>
+      <td class="win" >{{team.win}}</td>
+      <td class="loss">{{team.loss}}</td>
       {% if team.team_group == 1%}
       <td class="group">Senior</td>
       {% else %}

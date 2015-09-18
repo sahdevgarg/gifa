@@ -1,29 +1,39 @@
 
-<table class="table table-striped table-hover match-table">
-  <thead>
-    <tr>
-      <th></th>
-      {% for match in match_list%}
-      <th>Match {{match.match_no}}</th>
-      {% endfor %}
-    </tr>
-  </thead>
 
-  <tbody>
-    <tr class="success11">
-      <td><p> Slot {{match_list.0.slot_no}}</p>
-      <p>{{time}}</p></td>
-        {% for match in match_list%}
+<div class="panel panel-default">
+  <div class="panel-heading">Slot {{match_list.0.slot_no}} {{time}}</div>
+  <div class="panel-body">
+  <div class="panel panel-default">
+        
+      {% for match in match_list%}
+      <div class="col-lg-3">
+
+        Match {{match.match_no}}
         {% if match.team_a %}
-        <td><a class="team-name" href="{{match.team_a.get_absolute_url}}">{{match.team_a}}</a> vs <a class="team-name" href="{{match.team_b.get_absolute_url}}">{{match.team_b}}</a></td>
+           <h5><a class="team-name" href="{{match.team_a.get_absolute_url}}">{{match.team_a|title}}</a></h5>
+            vs 
+            <h5><a class="team-name" href="{{match.team_b.get_absolute_url}}">{{match.team_b|title}}</a></h5>
+            {% if match.result_type == 2 or match.result_type == 3 %}
+            <h5> Score {{match.team_a_goal}} - {{match.team_b_goal}}
+            {% endif %}
+            {% if match.result_type == 1 %}
+            <h5>Yet To Play</h5>
+            {% elif match.result_type == 2 %}
+            <h5>{{match.winning_team.team_name|title}} Win</h5>
+            {% elif match.result_type == 3 %}
+            <h5> Match Is Draw</h5>
+            {% elif match.result_type == 3 %}
+            <h5> Match is abandoned</h5>
+            {% endif %}
+
         
         {% else %}
-      <td>No Match</td>
+      <h5> No Match </h5>
       {% endif %}
+      </div>
         {% endfor %}
-      
-    </tr>
-    
-  </tbody>
+         </div>
+        </div>
+  </div>
+
   
-</table> 

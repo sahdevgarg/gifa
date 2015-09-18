@@ -1,6 +1,6 @@
 
 
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <div class="panel-heading"><b>Slot {{match_list.0.slot_no}}</b> <span class="pull-right">{{time}}</span></div>
   <div class="panel-body" style="padding:0px ;background:rgba(0,0,0,0.1);">
         
@@ -9,7 +9,7 @@
         <div class="panel-body" style="text-align: center">
 
 
-        Match {{match.match_no}}
+        <b>Match {{match.match_no}}</b>
         {% if match.team_a %}
            <h5><a class="team-name" href="{{match.team_a.get_absolute_url}}">{{match.team_a|title}}</a></h5>
             vs 

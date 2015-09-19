@@ -1,4 +1,5 @@
-{% with match_list|slice:"0:4" as match_list and "3:30 pm - 4:00 pm" as time %}
+{% if match_list.0.slot_type == 1 %}
+{% with match_list|slice:"0:4" as match_list and "3:30 p.m - 4:00 p.m" as time %}
 {% include "temp.html"%}
 {% endwith %}
 {% with match_list|slice:"4:8" as match_list and "4:10p.m - 4:40p.m" as time %}
@@ -28,3 +29,36 @@
 {% with match_list|slice:"36:40" as match_list and "9:30p.m - 10:00p.m" as time%}
 {% include "temp.html"%}
 {% endwith %}
+
+{% else %}
+{% with match_list|slice:"0:4" as match_list and "7:00a.m - 7:30a.m" as time %}
+{% include "temp.html"%}
+{% endwith %}
+{% with match_list|slice:"4:8" as match_list and "7:40a.m - 8:10a.m" as time %}
+{% include "temp.html"%}
+{% endwith %}
+{% with match_list|slice:"8:12" as match_list and "8:20a.m - 8:50a.m" as time%}
+{% include "temp.html"%}
+{% endwith %}
+{% with match_list|slice:"12:16" as match_list and "9:00a.m - 9:30a.m" as time%}
+{% include "temp.html"%}
+{% endwith %}
+{% with match_list|slice:"16:20" as match_list and "9:40a.m - 10:10a.m" as time%}
+{% include "temp.html"%}
+{% endwith %}
+{% with match_list|slice:"20:24" as match_list and "10:20a.m - 10:50a.m" as time%}
+{% include "temp.html"%}
+{% endwith %}
+{% with match_list|slice:"24:28" as match_list and "11:00a.m - 11:30a.m" as time%}
+{% include "temp.html"%}
+{% endwith %}
+{% with match_list|slice:"28:32" as match_list and "11:40a.m - 12:10p.m" as time%}
+{% include "temp.html"%}
+{% endwith %}
+{% with match_list|slice:"32:36" as match_list and "12:20p.m - 12:50p.m" as time%}
+{% include "temp.html"%}
+{% endwith %}
+{% with match_list|slice:"36:40" as match_list and "1:00p.m - 1:30p.m" as time%}
+{% include "temp.html"%}
+{% endwith %}
+{% endif %}

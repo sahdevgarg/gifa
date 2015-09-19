@@ -219,6 +219,8 @@ body {
 }
  .region.nav-tabs > li > a {color: #fff}
  .region.nav-tabs > li.active > a,.region.nav-tabs > li:hover > a {color: #222}
+ .match.nav-tabs > li > a {color: black;background-color: #fff;}
+ .match.nav-tabs > li.active > a, .match.nav-tabs > li:hover > a {color: #fff;background-color: #007CB0;}
 .post-content img {
 width: 100%;
 height: auto;

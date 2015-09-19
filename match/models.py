@@ -18,6 +18,7 @@ class Match(models.Model):
 	match_date = models.DateField(_("Match Date"))
 	result_type = models.IntegerField( choices=RESULT_LIST_TYPES, blank=False, null=False, verbose_name=_('result type*'),help_text=_("Result Type type 1:match scheduled, 2: match with result,3: match with draw,4: match canceled"))
 	team_a_goal = models.IntegerField(_('Team A Goal'),default=0)
+	slot_type = models.IntegerField(_('slot_type'),default=1)
 	schedule =  models.DateTimeField(_('Scheduled Date'))
 	team_b_goal = models.IntegerField(_('Team B Goal'),default=0)
 	winning_team = models.ForeignKey(Teams,null=True,related_name="Winning Team+",editable = False)

@@ -1,0 +1,5 @@
+{% block javascript%}
+{{block.super}}
+   <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "7d1da0ea-8d30-4c1a-b2a4-e23bfeac9ec9", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+{% endblock javascript%}

@@ -9,7 +9,7 @@ class MatchList(TemplateView):
 	template_name = "match_listing.html"
 	def get(self,*args, **kwargs):
 		context = super(MatchList, self).get_context_data(**kwargs)
-		context["city"] = self.request.GET.get('city','Gurgaon')
+		context["city"] = self.request.GET.get('city','Delhi')
 		match_list = Match.objects.filter(enabled=True,match_date__gte=date.today(),city=context["city"]).order_by('schedule')
 		paginator = Paginator(match_list, 40)
 		page = self.request.GET.get('page',"")

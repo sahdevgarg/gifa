@@ -50,28 +50,27 @@
 <h2>{{city}} Matches</h2>
 
 <br/>
+{% if city == "Gurgaon" %}
+<ul class=" match nav nav-tabs">
+      <li {% if match_list.number == 1 %} class="active" {% endif %}><a href="?page=1&city=Gurgaon"  style="padding: 10px 30px;">Sept 26</a></li>
+      <li {% if match_list.number == 2 %} class="active" {% endif %}><a href="?page=2&city=Gurgaon"  style="padding: 10px 30px;">Sept 27</a></li>
+      <li {% if match_list.number == 3 %} class="active" {% endif %}><a href="?page=3&city=Gurgaon"  style="padding: 10px 30px;">Oct 3</a></li>
+      <li {% if match_list.number == 4 %} class="active" {% endif %}><a href="?page=4&city=Gurgaon"  style="padding: 10px 30px;">Oct 4</a></li>
+</ul>
+{% endif %}
+{% if city == "Delhi" %}
+<ul class=" match nav nav-tabs" style="padding-left: 20px;margin-top:20px">
+      <li  {% if match_list.number == 1 %} class="active" {% endif %}><a href="?page=1&city=Delhi"  style="padding: 10px 30px;">Sept 26</a></li>
+      <li  {% if match_list.number == 2 %} class="active" {% endif %}><a href="?page=2&city=Delhi"  style="padding: 10px 30px;">Sept 27 (morning)</a></li>
+      <li  {% if match_list.number == 3 %} class="active" {% endif %}><a href="?page=3&city=Delhi"  style="padding: 10px 30px;">Sept 27 (evening)</a></li>
+      <li  {% if match_list.number == 4 %} class="active" {% endif %}><a href="?page=4&city=Delhi"  style="padding: 10px 30px;">Oct 3</a></li>
+</ul>
+{% endif %}
 {% if match_list %}
 <h4>{{match_list.0.match_date|date:"F d, Y"}}</h4>
 {% with match_list|slice:"0:40" as match_list%}
 {% include "matchlist_data.html"%}
 {% endwith %}
- {% if page_list|length > 1%}
-      <div style="text-align:center; padding: 10px;">
-      {% if match_list.number != page_list|first  %}
-      <a href="?page={{match_list.previous_page_number}}">< Previous</a>
-      {% endif %}
-    {% for page in page_list%}
-      {% if page == match_list.number %}
-      <a href="?page={{page}}" style="color:black">{{page}}</a>
-      {% else %}
-      <a href="?page={{page}}">{{page}}</a>
-      {% endif %}
-    {% endfor %}
-    {% if match_list.number != page_list|last  %}
-      <a href="?page={{match_list.next_page_number}}">Next ></a>
-      {% endif %}
-    </div>
-    {% endif %}
 {% else %}
 <p>No Matches</p>
 {% endif %}
@@ -94,7 +93,7 @@
 </div>
        
         <!-- Footer -->
-        
+        </div>
 {% include "footer.html"%}
 
 

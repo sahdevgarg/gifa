@@ -23,8 +23,6 @@ class TeamdetailView(TemplateView):
 		context = super(TeamdetailView, self).get_context_data(**kwargs)
 		context["team"] = Teams.objects.get(id=context["team_id"]);
 		context["match_list_a"] = Match.objects.filter(team_a=context["team"])
-		print context["match_list_a"]
 		context["match_list_b"] = Match.objects.filter(team_b=context["team"])
-		print context["match_list_b"]
 		context["player_list"] = Player.objects.filter(team=context["team_id"]);
 		return self.render_to_response(context)

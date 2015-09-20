@@ -11,11 +11,14 @@ from accounts.views import Userview,Logoutview,UserDetailView
 from news.api_views import NewsListApiView,NewsDetailApiView
 from teams.api_views import TeamsListApiView,TeamsDetailApiView
 from image.api_views import ImagelistingApiView
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import RedirectView
+
 
 urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', IndexView.as_view()),
+    url(r'^$', IndexView.as_view(),name="home"),
     url(r'^news/listing.htm$', NewsList.as_view(),{'html_id':'news'}),
     url(r'^teams/listing.htm$', TeamsList.as_view(),{'html_id':'team'}),
     url(r'^matches.htm$', MatchList.as_view(),{'html_id':'match'}),
@@ -41,7 +44,7 @@ urlpatterns = [
     url(r'^api/news_reject/',RejectNews.as_view()),
     url(r'^api/image_enable/',SaveImage.as_view()),
     url(r'^api/image_reject/',RejectImage.as_view()),
-    url(r'^sponsers.htm',TemplateView.as_view(template_name="sponsers.html")),
+    url(r'^sponsors.htm',TemplateView.as_view(template_name="sponsers.html")),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.STATIC_ROOT}),
 
     
@@ -52,8 +55,5 @@ urlpatterns += patterns('',
             {'document_root': settings.STATIC_ROOT}),
         (r'^media/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': settings.MEDIA_ROOT}),
-
-    )
-
-
-
+        (r'^.*$', RedirectView.as_view(pattern_name='home')),
+)

@@ -11,6 +11,7 @@ from accounts.views import Userview,Logoutview,UserDetailView
 from news.api_views import NewsListApiView,NewsDetailApiView
 from teams.api_views import TeamsListApiView,TeamsDetailApiView
 from image.api_views import ImagelistingApiView
+from match.api_views import MatchlistingApiView
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import RedirectView
 
@@ -38,6 +39,7 @@ urlpatterns = [
     url(r'^api/news/detail/$', NewsDetailApiView.as_view()),
     url(r'^api/teams/detail/$', TeamsDetailApiView.as_view()),
     url(r'^api/image/listing/$', ImagelistingApiView.as_view()),
+    url(r'^api/match/listing/$', MatchlistingApiView.as_view()),
     url(r'^api/user_data/',Userview.as_view()),
     url(r'^api/logout_user/',Logoutview.as_view()),
     url(r'^api/news_enable/',SaveNews.as_view()),

@@ -19,6 +19,7 @@
     <div class="slides"></div>
     <!-- Controls for the borderless lightbox -->
     <h3 class="title"></h3>
+    <h4 class="description"></h4>
     <a class="prev">‹</a>
     <a class="next">›</a>
     <a class="close">×</a>
@@ -27,8 +28,8 @@
 </div>
 <div id="links" style="text-align:center">
     {% for image in image_list %}
-    <a  href="{{image.image}}" title="{{image.title}}" data-gallery style="background-color: WHITE;padding: 2px;display: inline-block; max-width: 204px;max-height: 124px;text-align: center;vertical-align: middle;">
-        <img  src="{{image.image}}" alt="{{image.title}}" style=" max-width: 200px;max-height: 120px;">
+    <a  href="{{image.image}}" title="{{image.title}}" data-description=" By {{image.user|title}}" data-gallery style="background-color: WHITE;padding: 2px;display: inline-block; max-width: 204px;max-height: 124px;text-align: center;vertical-align: middle;">
+        <img  src="{{image.image}}" alt="{{image.title}}"  style=" max-width: 200px;max-height: 120px;">
     </a>
     {% endfor %}
 </div>
@@ -78,5 +79,35 @@
 {% block javascript %}
   {{ block.super }}
   <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-  
+  <script>
+  $(document).ready(function(){
+  blueimp.Gallery(
+    document.getElementById('links'), {
+        onslide: function (index, slide) {
+            var text = this.list[index].getAttribute('data-description'),
+                node = this.container.find('.description');
+            node.empty();
+            if (text) {
+                node[0].appendChild(document.createTextNode(text));
+            }
+        }
+});
+
+document.getElementById('links').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event, onslide: function (index, slide) {
+            var text = this.list[index].getAttribute('data-description'),
+                node = this.container.find('.description');
+            node.empty();
+            if (text) {
+                node[0].appendChild(document.createTextNode(text));
+            }
+        } },
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+};
+})
+</script>
 {% endblock javascript %}

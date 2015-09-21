@@ -33,6 +33,7 @@ class Imageview(TemplateView):
 		user = get_user_model().objects.get(email=request.user.email)
 		done = request.POST.get('done', False)
 		submit = request.POST.get('save', False)
+		fb_id = request.POST.get('fb_id', False)
 		name = u'{name}.{ext}'.format(
 	        name=uuid.uuid4().hex,
 	        ext=os.path.splitext(request.FILES['image'].name)[1].strip('.')
@@ -46,7 +47,7 @@ class Imageview(TemplateView):
 			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user);
 			return HttpResponseRedirect('/gallery.htm')
 		if done:
-			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user,enabled=False);
+			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user,enabled=False,fb_id=fb_id);
 			return HttpResponseRedirect('/profile/'+(self.request.user.first_name).lower()+'/'+str(self.request.user.id)+'.htm')
 	@csrf_exempt
 	def dispatch(self, *args, **kwargs):

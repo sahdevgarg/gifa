@@ -161,6 +161,16 @@ body {
   vertical-align: middle !important;
 
 }
+.blueimp-gallery > .description {
+  position: absolute;
+  top: 38px;
+  left: 15px;
+  color: #EAEAEA;
+  display: none;
+}
+.blueimp-gallery-controls > .description {
+  display: block;
+}
 .match-table td:first-of-type p:first-of-type{
   margin-bottom: 0px;
   font-weight: bold;
@@ -294,6 +304,8 @@ code {
           display: block;
           margin: 20px auto;
           }
+
+
 
 @media (max-width: 480px){
 div#links a {

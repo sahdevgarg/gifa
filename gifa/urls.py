@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^approve-article.htm$', NewsapprovalView.as_view()),
     url(r'^approve-image.htm$', ImageapprovalView.as_view()),
     url(r'^profile/(?P<slug>[-\w]+)/(?P<user_id>[-\w]+).htm$', UserDetailView.as_view()),
+    url(r'^gallery/(?P<image_id>[-\w]+).htm$', ImageDetail.as_view()),
     url(r'^api/news/listing/$', NewsListApiView.as_view()),
     url(r'^api/teams/listing/$', TeamsListApiView.as_view()),
     url(r'^api/news/detail/$', NewsDetailApiView.as_view()),

@@ -83,6 +83,18 @@ class ImageapprovalView(TemplateView):
 		context["page_list"] = paginator.page_range
 		return self.render_to_response(context)
 
+class ImageDetail(TemplateView):
+	template_name = "image_detail.html"
+	def get(self,*args, **kwargs):
+		context = super(ImageDetail, self).get_context_data(**kwargs)
+		try:
+			context["image"] = Image.objects.get(enabled=True,id=context["image_id"])
+		except:
+			return HttpResponseRedirect('/')
+	
+		return self.render_to_response(context)
+
+
 class SaveImage(JSONView):
 
     def get(self, *args, **kwargs):

@@ -62,7 +62,7 @@
         <h4 class="modal-title" id="myModalLabel">Image preview</h4>
       </div>
       <div class="modal-body" style="text-align: center">
-        <img src="" id="imagepreview" style="width: 400px; height: 264px;" >
+        <img src="" id="imagepreview" style="width: 100%; height: auto;" >
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -108,8 +108,9 @@
      $('#imagepreview').attr('src', $(this).children().attr('src'));
      $('#myModalLabel').text($(this).children().attr('value'))
      $('#imagemodal').modal('show');
-   
     });
+
+    
   })
   </script>
 {% endblock javascript %}

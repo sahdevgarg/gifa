@@ -294,3 +294,9 @@ code {
           display: block;
           margin: 20px auto;
           }
+
+@media (max-width: 480px){
+div#links a {
+    max-width: 49%;
+    padding: 4px !important;
+}}

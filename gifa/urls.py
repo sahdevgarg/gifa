@@ -14,6 +14,7 @@ from image.api_views import ImagelistingApiView
 from match.api_views import MatchlistingApiView
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import RedirectView
+from contact.views import *
 
 
 urlpatterns = [
@@ -48,6 +49,9 @@ urlpatterns = [
     url(r'^api/image_enable/',SaveImage.as_view()),
     url(r'^api/image_reject/',RejectImage.as_view()),
     url(r'^sponsors.htm',TemplateView.as_view(template_name="sponsers.html")),
+    url(r'^thankyou.htm', TemplateView.as_view(template_name="thankyou.html")),
+    url(r'^contact.htm', ContactView.as_view(),{'html_id':'contact'}),
+    url(r'^query-list.htm', ContactlistView.as_view()),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.STATIC_ROOT}),
 
     

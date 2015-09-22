@@ -45,18 +45,24 @@
         <li {% if html_id == "match" %}class="active"{% endif %}><a href="/matches.htm">Matches</a></li>
         <li {% if html_id == "team" %}class="active"{% endif %}><a href="/teams/listing.htm">Teams</a></li>
         <li {% if html_id == "gallery"%}class="active"{% endif %}><a href="/gallery.htm">Photo Gallery</a></li>
-        <li {% if html_id == "sponser" %}class="active"{% endif %}><a href="/sponsors.htm">Sponsors</a></li>       
+        <li {% if html_id == "sponser" %}class="active"{% endif %}><a href="/sponsors.htm">Sponsors</a></li>   
+        <li {% if html_id == "contact" %}class="active"{% endif %}><a href="/contact.htm">Contact Us</a></li>    
       </ul>     
-      <ul class="nav navbar-nav navbar-right" style="    margin-top: 10px;">
+      <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
       {% if request.user.is_superuser %}
-       <li style="    margin-right: 10px;">
-          <a href="/approve-article.htm" class="btn btn-danger btn-sm " style="font-size: 14px; padding:5px 10px">
-            <span class="fa fa-edit" aria-hidden="true" style="margin-right: 5px;"></span><span class=" ">Pending Article</span></a>
-          </li>
-         <li style="    margin-right: 10px;">
-          <a href="/approve-image.htm" class="btn btn-danger btn-sm " style="font-size: 14px; padding:5px 10px">
-            <span class="fa fa-edit" aria-hidden="true" style="margin-right: 5px;"></span><span class=" ">Pending Images</span></a>
-          </li>
+
+      <li class="dropdown" style="margin-right:10px">
+        <div class="btn-group ">
+          <a href="#" class="btn btn-danger btn-sm">Pending</a>
+          <a href="#" class="btn btn-danger dropdown-toggle btn-sm" data-toggle="dropdown"><span class="caret"></span></a>
+
+          <ul class="dropdown-menu">
+            <li><a href="/approve-article.htm">Pending Article</a></li>
+            <li><a href="/approve-image.htm">Pending Images</a></li>
+            <li><a href="/query-list.htm">Pending Query</a></li>
+          </ul>
+          </div>
+        </li>
       {% endif %}
       {% if request.user.is_authenticated %}
         <li style="    margin-right: 10px;">

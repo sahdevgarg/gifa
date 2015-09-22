@@ -1,0 +1,33 @@
+function validateForm(){
+    var title = $("#textinput").val();
+    var content_words = parseInt($("#mceu_33").text().replace("Words: ",""));
+    var title_count = parseInt($("#count").text());
+    var team1 = $("#team1").val();
+    var team2 = $("#team2").val();
+    if (title.length < 10)
+    {
+      alert(" Minimum title length should be 20")
+      return false
+    }
+    else if (title.length > 140)
+    {
+      alert(" Maximum title length should be 140")
+      return false
+    }
+    else
+    {
+        if (!image_upload)
+        {
+          alert("Please upload the cover image");
+          return false
+        }
+        else
+        {
+            return true
+        }
+      }
+  }
+
+ $(document).ready(function() {
+  $(".select_box").select2();
+});

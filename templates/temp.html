@@ -5,34 +5,41 @@
   <div class="panel-body" style="padding:0px ;background:rgba(0,0,0,0.1);">
         
       {% for match in match_list%}
-      <div class="col-lg-5 col-md-5 col-sm-6 panel panel-default slot-match" style="margin:10px; padding:0px">
+      <div class="col-lg-6 col-md-6 col-sm-6 panel panel-default slot-match" style="padding: 0px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    margin: 0;">
         <div class="panel-body" style="text-align: center">
-
-
+        <div style="background-color: #fff; padding: 10px 0px 0px; border: 1px solid #d9d9d9; border-radius: 4px;-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);">
         <b>Match {{match.match_no}}</b>
         {% if match.team_a %}
            <h5><a class="team-name" href="{{match.team_a.get_absolute_url}}">{{match.team_a|title}}</a></h5>
             vs 
             <h5><a class="team-name" href="{{match.team_b.get_absolute_url}}">{{match.team_b|title}}</a></h5>
-            </div>
             {% if match.result_type != 1 %}
             {% if match.result_type == 2 or match.result_type == 3 %}
             <div class="panel-footer" style="background:#6D9F36;text-align: center">
-            <h5 style="color: #fff;"> Score {{match.team_a_goal}} - {{match.team_b_goal}}
+            <h5 style="color: #fff;margin-top:0px"> Score {{match.team_a_goal}} - {{match.team_b_goal}}
             {% endif %}
             {% if match.result_type == 2 %}
-            <h5 style="color: #fff;">{{match.winning_team.team_name|title}} Win</h5>
+            <h5 style="color: #fff;margin-bottom:0px">{{match.winning_team.team_name|title}} Win</h5>
             {% elif match.result_type == 3 %}
-            <h5 style="color: #fff;"> Match Is Draw</h5>
+            <h5 style="color: #fff;margin-bottom:0px"> Match Is Draw</h5>
             {% elif match.result_type == 4 %}
             <div class="panel-footer" style="background:#C71C22;text-align: center">
-            <h5 style="color: #fff;"> Match Is Canceled</h5>
+            <h5 style="color: #fff;margin-bottom:0px"> Match Is Canceled</h5>
             {% endif %}
             </div>
             {% endif %}
-        
+          </div>
+            </div>
+
+
         {% else %}
       <h5> No Match </h5>
+      </div>
       </div>
       {% endif %}
       

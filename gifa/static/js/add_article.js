@@ -54,13 +54,7 @@ function validateForm(){
     }
     else
     {
-      if(content_words< 20)
-      {
-        alert("News article should have atleast 20 words")
-        return false
-      }
-      else
-      {
+     
         if (!image_upload)
         {
           alert("Please upload the cover image");
@@ -83,7 +77,6 @@ function validateForm(){
             return true
           }
         }
-      }
     }
   }
   $(document).ready(function() {

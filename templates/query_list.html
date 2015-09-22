@@ -1,0 +1,76 @@
+ 
+{% extends "base.html" %}
+{% block content%}
+  
+  <div class="container" style="background:rgba(0,0,0, 0.1);padding: 0px;">
+
+      {% include "header.html"%}
+    </div>
+<div class="container" style="background:rgba(255,255,255, 0.8);padding: 0px;">
+<div class="container" style="background:rgba(255,255,255, 0.1);">         
+  <div class="row" style="  border-top: 1px solid #ddd;   padding-top: 20px;">
+
+  <div class="col-lg-9 col-md-8 left-more-news">
+  {% if query_list %}
+  <h3 style="margin-top:0;">Pending Query</h3>
+  {% for query in query_list %}
+  <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading"><a href="{{news_url}}">{{query.title}}</a></h4>
+        {{query.message}}
+        
+        <ul class="list-inline">
+        <li>By <a href="mailto:{{query.email}}" target="_top">{{query.email}}</a>
+        </li>
+        <li>{{query.created_date}}</li>
+
+
+      </div>
+    </div>
+
+    {% endfor %}
+
+    {% if page_list|length > 1%}
+      <div style="text-align:center; padding: 10px;">
+      {% if query_list.number != page_list|first  %}
+      <a href="?page={{query_list.previous_page_number}}">< Previous</a>
+      {% endif %}
+    {% for page in page_list%}
+      {% if page == query_list.number %}
+      <a href="?page={{page}}" style="color:black">{{page}}</a>
+      {% else %}
+      <a href="?page={{page}}">{{page}}</a>
+      {% endif %}
+    {% endfor %}
+    {% if query_list.number != page_list|last  %}
+      <a href="?page={{query_list.next_page_number}}">Next ></a>
+      {% endif %}
+    </div>
+    {% endif %}
+     {% else %}
+       <img title="opening ceremony" width="100%" src="{{STATIC_URL}}image/gifaopening.jpg">
+     {% endif %}
+  </div>
+
+
+<div class="col-lg-3  col-md-4">
+<div class="panel panel-primary panel-tweets">
+  <div class="panel-heading">
+    <h3 class="panel-title">Tweets</h3>
+  </div>
+  <div class="panel-body">
+    <a class="twitter-timeline" href="https://twitter.com/hashtag/htgifa" data-widget-id="641207408245669888">#htgifa Tweets</a>
+  </div>
+  </div>
+</div>
+       
+    </div>
+     </div>
+        {% include "footer.html"%}
+
+
+
+   
+    <!-- /.container -->
+</div>
+{% endblock content%}

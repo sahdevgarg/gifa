@@ -20,6 +20,7 @@ import os
 class NewsImageview(JSONView):
 
     def post(self, request, *args, **kwargs):
+    	print "aaaaaa",request.POST["title"]
     	name = u'{name}.{ext}'.format(
             name=uuid.uuid4().hex,
             ext=os.path.splitext(request.FILES['image'].name)[1].strip('.')

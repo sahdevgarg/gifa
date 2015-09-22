@@ -14,6 +14,25 @@ import os
 
 # Create your views here.
 
+class MobileImageUpload(JSONView):
+
+    def post(self, request, *args, **kwargs):
+    	name = u'{name}.{ext}'.format(
+            name=uuid.uuid4().hex,
+            ext=os.path.splitext(request.FILES['image'].name)[1].strip('.')
+        )
+    	image_path = os.path.join(settings.MEDIA_ROOT, name)
+    	media_path = os.path.join(settings.MEDIA_URL, name)
+    	destination = open(image_path, 'wb+')
+    	for chunk in request.FILES['image'].chunks():
+    		destination.write(chunk)
+		Image.objects.create(title=request.POST["title"],image=media_path);
+		return HttpResponse("Your Image has been uploaded")
+
+	@csrf_exempt
+	def dispatch(self, *args, **kwargs):
+		return super(MobileImageUpload, self).dispatch(*args, **kwargs)
+
 
 class Imageview(TemplateView):
 	template_name = "upload_image.html"

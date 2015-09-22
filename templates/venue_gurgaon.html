@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content%}
+
+     <!-- Page Content -->
+<div class="container" style="background:rgba(0,0,0, 0.1);padding: 0px; ">
+      {% include "header.html"%}
+</div>
+
+    <!-- Page Content -->
+<div class="container" style="background:rgba(255,255,255, 0.8);padding: 0px;">
+<div class="container" style="background:rgba(255,255,255, 0.1);">         
+  <div class="row" style="  border-top: 1px solid #ddd;   padding-top: 20px;">
+
+  <div class="col-lg-9 col-md-8 left-more-news" >
+    <div style="text-align:center">
+      <h1>GIFA - Gurgaon Phase</h1>
+      <h2>Ansal University 3D-View<h2>
+      </div>
+    {% for i in 'ddddddddddddddddddd'%}
+    {% if forloop.counter > 2%}
+    <img title="Gurgaon Venue 3D View" src="{{STATIC_URL}}image/gurgaonvenue{{forloop.counter}}.jpg" style="width:100%;" class="img-responsive">
+    {% endif %}
+    </br>
+    {% endfor %}
+  </div>
+<div class="col-lg-3  col-md-4">
+<div class="panel panel-primary panel-tweets">
+  <div class="panel-heading">
+    <h3 class="panel-title">Tweets</h3>
+  </div>
+  <div class="panel-body">
+    <a class="twitter-timeline" href="https://twitter.com/hashtag/htgifa" data-widget-id="641207408245669888">#htgifa Tweets</a>
+  </div>
+  </div>
+</div>
+       
+    </div>
+     </div>
+       
+      {% include "footer.html"%}
+     </div>
+       
+
+
+
+   
+    <!-- /.container -->
+</div>
+{% endblock content%}
+

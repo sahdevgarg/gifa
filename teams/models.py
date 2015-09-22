@@ -21,7 +21,7 @@ class Teams(models.Model):
     win = models.PositiveIntegerField(default=0,editable = False)
     draw = models.PositiveIntegerField(default=0,editable = False)
     loss = models.PositiveIntegerField(default=0,editable = False)
-    team_group = models.PositiveIntegerField(default=0,editable = False)
+    team_group = models.PositiveIntegerField(default=0)
     enabled = models.BooleanField(default=True,help_text='check to enable the team')
     created_date = models.DateTimeField(_('Created Date'), auto_now_add=True)
     modified_date = models.DateTimeField(_('Modified Date'), auto_now=True)

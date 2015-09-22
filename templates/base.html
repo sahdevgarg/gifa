@@ -43,6 +43,13 @@
       <ul class="nav navbar-nav">
         <li {% if html_id == "news"%}class="active"{% endif %}><a href="/news/listing.htm">News</a></li>
         <li {% if html_id == "match" %}class="active"{% endif %}><a href="/matches.htm">Matches</a></li>
+        <li {% if html_id == "venue" %}class="active dropdown" {% else %} class="dropdown" {% endif %}>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Venues <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/venue/delhi.htm">Delhi</a></li>
+            <li><a href="/venue/gurgaon.htm">Gurgaon</a></li>
+          </ul>
+        </li>
         <li {% if html_id == "team" %}class="active"{% endif %}><a href="/teams/listing.htm">Teams</a></li>
         <li {% if html_id == "gallery"%}class="active"{% endif %}><a href="/gallery.htm">Photo Gallery</a></li>
         <li {% if html_id == "sponser" %}class="active"{% endif %}><a href="/sponsors.htm">Sponsors</a></li>   

@@ -120,7 +120,7 @@
 
 <div class="container">
 {% for player in player_list %}
-
+{% if player.name %}
 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" style="margin-bottom: 40px; height:190px">
     <div style="padding:10px; border: 1px solid #ddd; ">
       <div style="">
@@ -132,6 +132,7 @@
       </div>  
     </div>
 </div>
+{% endif %}
 {% endfor %}
 
 </div>

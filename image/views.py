@@ -26,7 +26,7 @@ class MobileImageUpload(JSONView):
     	destination = open(image_path, 'wb+')
     	for chunk in request.FILES['image'].chunks():
     		destination.write(chunk)
-		Image.objects.create(title=request.POST["title"],image=media_path);
+		Image.objects.create(title=request.POST["title"],image=media_path,enabled=False);
 		return HttpResponse("Your Image has been uploaded")
 
 	@csrf_exempt

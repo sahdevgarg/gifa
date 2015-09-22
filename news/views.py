@@ -49,7 +49,10 @@ class Addarticleview(TemplateView):
 		context = self.get_context_data(**kwargs)
 		data = request.POST
 		user = get_user_model().objects.get(email=request.user.email)
-		team_a = Teams.objects.get(id = data["Team1"])
+		try:
+			team_a = Teams.objects.get(id = data["Team1"])
+		except:
+			team_a = None
 		try:
 			team_b = Teams.objects.get(id = data["Team2"])
 		except:

@@ -62,12 +62,8 @@ function validateForm(){
         }
         else
         {
-          if(!team1)
-          {
-            alert("please select a team")
-            return false
-          }
-          else if (team1 == team2)
+
+          if (team1 == team2 && team1 != "")
           {
             alert("Please select different teams")
             return false

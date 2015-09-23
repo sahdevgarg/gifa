@@ -62,10 +62,10 @@ class Imageview(TemplateView):
 		for chunk in request.FILES['image'].chunks():
 		        destination.write(chunk)
 		if submit:
-			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user);
+			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user,trivia=data["trivia"]);
 			return HttpResponseRedirect('/gallery.htm')
 		if done:
-			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user,enabled=False);
+			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user,enabled=False,trivia=data["trivia"]);
 			return HttpResponseRedirect('/profile/'+(self.request.user.first_name).lower()+'/'+str(self.request.user.id)+'.htm')
 	@csrf_exempt
 	def dispatch(self, *args, **kwargs):
@@ -77,7 +77,7 @@ class ImageListview(TemplateView):
 		context = super(ImageListview, self).get_context_data(**kwargs)
 		context["trivia"] = self.request.GET.get('trivia',False)
 		if context["trivia"]:
-			image_list = Image.objects.filter(enabled=True,tags="trivia").order_by('-modified_date');
+			image_list = Image.objects.filter(enabled=True,trivia=True).order_by('-modified_date');
 		else:
 			image_list = Image.objects.filter(enabled=True).order_by('-modified_date');
 		paginator = Paginator(image_list, 20)

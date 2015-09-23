@@ -105,7 +105,14 @@ class Editarticleview(TemplateView):
 		data = request.POST
 		done = request.POST.get('done', False)
 		user = get_user_model().objects.get(email=request.user.email)
-		team_a = Teams.objects.get(id = data["Team1"])
+		try:
+			team_a = Teams.objects.get(id = data["Team1"])
+		except:
+			team_a = None
+		try:
+			team_b = Teams.objects.get(id = data["Team2"])
+		except:
+			team_b = None
 		fb_id = request.POST.get('fb_id', False)
 		try:
 			team_b = Teams.objects.get(id = data["Team2"])
@@ -130,15 +137,15 @@ class Editarticleview(TemplateView):
 		submit = request.POST.get('save', False)
 		if preview:
 			news = News.objects.filter(id=data["news_id"]).update(title=data["title"],coverimage=media_path,content=data["news_content"],tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=False,rejected=False);
-			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,user=user);
+			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a);
 			return HttpResponseRedirect('/news/'+str(news_obj.slug)+'/article'+str(news_obj.id)+'.htm?preview=True')
 		if submit:
 			news = News.objects.filter(id=data["news_id"]).update(title=data["title"],coverimage=media_path,content=data["news_content"],tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=True,rejected=False);
-			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,user=user);
+			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a);
 			return HttpResponseRedirect('/news/'+str(news_obj.slug)+'/article'+str(news_obj.id)+'.htm')
 		if done:
-			news = News.objects.filter(id=data["news_id"]).update(title=data["title"],coverimage=media_path,content=data["news_content"],user=user,tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=False,rejected=False);
-			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,user=user,enabled=False);
+			news = News.objects.filter(id=data["news_id"]).update(title=data["title"],coverimage=media_path,content=data["news_content"],tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=False,rejected=False);
+			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,enabled=False);
 			return HttpResponseRedirect('/profile/'+(self.request.user.first_name).lower()+'/'+str(self.request.user.id)+'.htm')
 	@csrf_exempt
 	def dispatch(self, *args, **kwargs):

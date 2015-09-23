@@ -1,0 +1,78 @@
+1	ALL STARS F.C	Sispal Vihar	
+2	Bestech Park View City 2	Parkview City-2	Pool-1
+3	Bestech PVS FC	"Park View Spa, Sector 47"	
+4	Eldeco United	Eldeco Mansions	
+5	FPL Warriors	BPTP Freedom Park Life   	Pool-2
+6	Fresco Warriors	Fresco	
+7	Heritage Warriors	Heritage City	
+8	Invincible 7	Vatika City	Pool-3
+9	JMD TITANS	JMD Garden	
+10	HAMILTON STUNNERZ	"Hamilton Court, Gurgaon"	
+11	Nirvana skill blazers	Nirvana Country	Pool-4
+12	PTFC Champions	DLF Pink Town Houses	
+13	nirvana's footballers	Nirvana Country	
+14	Palms FC Jr.	The Palms	Pool-5
+15	Parkview Dynamos	Parkview City-1	
+16	PINK TOWN FC JUNIOR	DLF Pink Town Houses	
+17	NIRVANA TIGERS	Nirvana Country	Pool-6
+18	Regaency park-II	Regency park-II	
+19	Ridgewood Strikers	Ridgewood Estate	
+20	VGFC	Vipul greens	Pool-7
+21	Static Soccer FC	Nirvana N Close	
+22	the underdogs	Raheja atlantis	
+23	Uniworld Warriors	Uniworld Garden	Pool-8
+24	Ridgewood Warriors	Ridgewood Estate	
+25	Aralias FC	Aralias	
+26	Beverly Blasters	Beverly Park 2	Pool-9
+27	DLF-5 FC	Park Place	
+28	FC Wembley Wizards	"Wembley Estate, Sector-49"	
+29	Malibu Masters	Malibu Town	Pool-10
+30	Richmond Rockers	Richmond Park	
+31	Rising Star Academy	The Icon	
+32	Wellington Estate	Wellington Estate	Pool-11
+33	Westend Heights	"Westend heights, Gurgaon "	
+34	Galaxy 7	"Mayfield Gardens, Sec 51"	
+35	UNITED LEGENDS	"Uppals southend, Gurgaon"	Pool-12
+36	SL69	Essel Towers	
+37	Oakwood Estate Boys	Oakwood Estate	
+38	7 united	"Shiv Puri, Gurgaon"	Pool-13
+39	Alpha Strikers United Football Club	Sector-45	
+40	Oakwood Estate Girls	Oakwood Estate	
+41	D.V.F.C	"Devinder Vihar, Gurgaon"	Pool-14
+42	DARK LIGTHNING	"Kendriya Vihar, Gurgaon"	
+43	Dead Shot FC	"Sector 22, Gurgaon"	
+44	E-LEMON-ATORZ	Sec 31 Housing Board Colony	Pool-15
+45	FC 3:16	SushantLok-1	
+46	fc ajanta	"South city 1, Gurgoan"	
+47	FC Madrid	"Sector 9, Gurgaon"	Pool-16
+48	FC PREDATORS - 'B'	Sector-40	
+49	Fc suncity	"Suncity Sec-54, Gurgaon"	
+50	fcb	Samanvay Apt Sec-56	Pool-17
+51	G W UNITED	"Sector-40, Gurgaon"	
+52	galatico warriors	Millenium residency 	
+53	Gurgaon Madrid	Wings Apartment	Pool-18
+54	gurgaon warriors	"Sector-17, Gurgaon"	
+55	hero devel	"Sector-15, Gurgaon"	
+56	Indian titans	"Laxman Vihar,Gurgaon"	Pool-19
+57	JVT STRIKERS	"Jalvayu Tower, Sec-56"	
+58	L!GHTN!NG BOLT$	Omaxe Nile	
+59	M K JUNIOR	Maruti Kunj	Pool-20
+60	Mathur Sports Academy	Sector 22	
+61	NEXTS	Sector 22	
+62	Redbulls	Sec 43 Gurgaon	Pool-21
+63	Retreat United FC	Retreat Complex	
+64	Royal Panthers	"Urban Estate, Gurgaon"	
+65	Royal Strikers	"Bhondsi,Gurgaon"	Pool-22
+66	SCR juniors	"Sector 4, Gurgaon"	
+67	Sehwag International School	"SISJ, Jhajjar,Gurgaon"	
+68	South Pool Rovers	"South City 2, Gurgaon"	Pool-23
+69	Spaze Privy	"Sector - 72, Gurgaon"	
+70	Sujjan invincibles	Sujjan Vihar	
+71	supastrikas	Sector 5	Pool-24
+72	The Spartans	Jalvayu Towers Gurgaon	
+73	THE ZENITH FC	M2K White House	
+74	vasant united	"Vasant Apartments, Gurgaon "	Pool-25
+75	56ers	"Sushant Lok-2, Gurgaon"	
+76	Wildbeasts	"Sector-45, Gurgaon"	
+77	WINNING BARCA	"SECTOR-10 A, GURGAON"	Pool-26
+78	Super Strikers	Police Lines Gurgaon	

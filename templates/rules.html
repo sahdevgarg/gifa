@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content%}
+     <!-- Page Content -->
+<div class="container" style="background:rgba(0,0,0, 0.1);padding: 0px; ">
+
+      {% include "header.html"%}
+    <!-- Page Content -->
+    <ul class="region nav nav-tabs">
+      <li class="active"><a href="#Gurgaon" data-toggle="tab" aria-expanded="true">Gurgaon</a></li>
+      <li class=""><a href="#Delhi" data-toggle="tab" aria-expanded="false">Delhi</a></li>
+    </ul>
+<div class="container" style="background:rgba(255,255,255, 0.8);padding: 0px;">
+<div class="container" style="background:rgba(255,255,255, 0.1);">         
+  <div class="row" style="  border-top: 1px solid #ddd;   padding-top: 20px;">
+
+  <div class="col-lg-9 col-md-8 news-detail">
+
+
+
+
+
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade active in" id="Gurgaon">
+    <h2>Rules for Gurgaon (Junior and Senior)</h2>
+    <ol>
+    <li>The teams are divided into different pools. One pool contains 3 teams.</li>
+    <li>Each team will get to play 2 matches.</li>          
+    <li>Team will be awarded 3 points for a win, 1 for a draw and 0 for a loss.</li>        
+     <li> We shall have pool toppers.</li>            
+   <li>The winning criterion for the pool topper will be maximum points scored, followed by highest goal difference, followed by maximum goals scored.</li>
+    <li>The top 16 for pre-quarters will be selected from among the pool toppers basis the  maximum points scored, followed by highest goal difference, followed by maximum goals scored.</li> 
+    <li>Post the selection of top 16, we do pre-quarters, quarters, semis and final.</li>
+    </ol>
+    <h3>Please Note –</h3>
+    <ul>
+     <li> In the event of any dispute, the decision of the HT GIFA management will be binding on all teams.</li>
+     <li>Handing a walkover and disqualification of teams is under the complete discretion of management.</li>
+     <li>On match days, we want the teams to be present at the venue 45 minutes before their match time.</li>
+     </ul>
+  </div>
+  <div class="tab-pane fade" id="Delhi">
+    <h2>Rules for Delhi (Junior and Senior)</h2>
+    <ol>
+    <li>We will follow knockout format .</li>
+    <li>Progress of a team depends on their continuous winning run.</li>          
+    <li>We do 3 rounds of knockouts to reach top 16 in Junior and Senior Category.</li>        
+     <li> The top 16 for pre-quarters will be selected after the 3 rounds of knockout basis the  maximum points scored, followed by highest goal difference, followed by maximum goals scored.</li>
+    </ol>
+    <h3>Please Note –</h3>
+    <ul>
+     <li> In the event of any dispute, the decision of the HT GIFA management will be binding on all teams.</li>
+     <li>Handing a walkover and disqualification of teams is under the complete discretion of management.</li>
+     <li>On match days, we want the teams to be present at the venue 45 minutes before their match time.</li>
+     </ul>
+  </div>
+  
+</div>
+
+  </div>
+
+
+  <div class="col-lg-3  col-md-4">
+
+
+
+<div class="panel panel-primary panel-tweets">
+  <div class="panel-heading">
+    <h3 class="panel-title">Tweets</h3>
+  </div>
+  <div class="panel-body">
+    <a class="twitter-timeline" href="https://twitter.com/hashtag/htgifa" data-widget-id="641207408245669888">#htgifa Tweets</a>
+  </div>
+
+  </div>
+</div>
+       
+        <!-- Footer -->
+        
+
+
+
+    </div>
+        <footer style="    background:rgba(0,0,0, 0.1); height: 250px; padding: 20px 0px;">
+            <div class="container">
+                <div class="col-lg-12">
+                    <p>Copyright © HT Media 2015</p>
+                </div>
+            </div>
+        </footer>
+
+
+
+    </div>
+    <!-- /.container -->
+</div>
+{% endblock content%}

@@ -52,9 +52,9 @@
 <div class="col-lg-9 col-md-8 news-detail" id="teams">
 <h2>{{city}} Teams</h2>
 {% if city == "Delhi" %}
-<h5 style="color:#222">Teams who have registered in Delhi will have their matches at <a href="/venue/delhi.htm">DPS R.K Puram</a></h5>
+<h5 style="color:#222">The venue for all the Teams registered in Delhi will be <a href="/venue/delhi.htm">Delhi Public School, RK Puram.</a></h5>
 {% else %}
-<h5 style="color:#222">Teams who have registered in Gurgaon will have their matches at <a href="/venue/gurgaon.htm">Ansal University</a></h5>
+<h5 style="color:#222">The venue for all the Teams registered in Gurgaon will be <a href="/venue/gurgaon.htm">Ansal University.</a></h5>
 {% endif %}
 <br/>
 <input class="search form-control" placeholder="Search" style="margin:10px 0px" />
@@ -64,12 +64,16 @@
       <th class="sort" data-sort="name" >Name</th>
       <th class="sort hidden-xs" data-sort="manager" >Manager's Name</th>
       <th class="sort hidden-xs" data-sort="game" >Games Played</th>
-      <th class="sort hidden-xs" data-sort="game" >Goals</th>
-      <th class="sort hidden-xs" data-sort="game" >Goals Faced</th>
+      <th class="sort hidden-xs" data-sort="total_goal" >Goals</th>
+      <th class="sort hidden-xs" data-sort="total_goal_faced" >Goals Faced</th>
       <th class="sort hidden-xs" data-sort="draw" >Draw</th>
       <th class="sort hidden-xs" data-sort="win" >Win</th>
       <th class="sort hidden-xs" data-sort="loss" >Loss</th>
       <th class="sort hidden-xs" data-sort="group">Group</th>
+      {% if city == "Gurgaon" %}
+      <th class="sort hidden-xs" data-sort="pool">Pool</th>
+      {% endif %}
+      <th class="hidden-lg hidden-md hidden-sm" data-sort="group">Stats</th>
     </tr>
   </thead>
   <tbody class="list">
@@ -94,6 +98,7 @@
       {% else %}
       <td class="group hidden-xs">Junior</td>
       {% endif %}
+
       <td class="hidden-lg hidden-md hidden-sm" width="50%">
         <div><b>Games Played:</b> {{team.games_played}}</div>
         <div><b>Goals:</b> {{team.total_goal}}</div>
@@ -140,8 +145,8 @@
  <script type="text/javascript">
   $("document").ready(function(){
     var options = {
-    valueNames: [ 'name', 'city' ,'manager' , 'draw' , 'loss' , 'win' , 'game'],
-    page : 293
+    valueNames: [ 'name', 'city' ,'manager' , 'draw' , 'loss' , 'win' , 'game','total_goal','total_goal_faced','group'],
+    page : 350
         };
     var hackerList = new List('teams', options,300);
 

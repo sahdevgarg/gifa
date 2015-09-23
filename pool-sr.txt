@@ -1,0 +1,75 @@
+1	Galactico 11	Princeton estate	
+2	Close FC	Nirvana North Close	Pool 1
+3	Beverly Bullets	Beverly Park-2	
+4	UNIWORLD F.C.	Uniworld Gardens	
+5	Mailbu F.C	Malibu Towne	Pool 2
+6	Sidemen XI	BPTP Freedom Park Life	
+7	The Tatvanators	Tatvam Villas	
+8	VATIKANS UNITED (VUFC)	Vatika City	Pool 3
+9	Princeton F.C.	Princeton Estate	
+10	Nirvana Tigers Football Club	Nirvana Country	
+11	DLF Phase - 1	"DLF-1, Gurgaon"	Pool 4
+12	Mohmaya	Sispal Vihar	
+13	Nirvana F.C	Nirvana Country	
+14	South City United	South City-1	Pool 5
+15	Galactico	Mayfield Garden	
+16	the incredibles	South city 2	
+17	GREENWOODS	Greenwood City	Pool 6
+18	Wembley Waveriders	Rosewood city	
+19	FC Oakwood	Oakwood estate	
+20	US Dominators	Uppal Southend	Pool 7
+21	Palms FC	The Palms South City 1	
+22	pink town FC	DLF Pink Town Houses	
+23	Invincible United	Mayfield Garden	Pool 8
+24	OG Hazardous	"Orchid Gardens,Suncity"	
+25	7ways	"Dayal market, Gurgaon"	
+26	All United	"Palam vihar, Gurgaon"	Pool 9
+27	Back Benchers FC	"Civil Lines, Gurgaon"	
+28	Black Hawks FC	"Sector 4, Gurgaon"	
+29	bomb skuad	"Sector 7, Gurgaon "	Pool 10
+30	Dead Walkers FC	"Sector-46, Gurgaon"	
+31	Devils FC	"Sector-52, Gurgaon"	
+32	ENIGMA FC	"Sikanderpur,Gurgaon"	Pool 11
+33	Excerjets FC	"Sector-39, Gurgaon"	
+34	f c sec 5	"Sector-5, Gurgaon"	
+35	F.C devil	"Jyoti Park, Gurgaon"	Pool 12
+36	FC Agonists	"Sanskriti Apartments, Gurgaon"	
+37	fc bayern	Sector 31	
+38	Fhamrock Football Academy Senior	Palam Vihar	Pool 13
+39	football first	"Mohammadpur, Gurgaon"	
+40	footballerzz	Sector-9	
+41	Galaxy 11	"Sector 7  , housing board colony"	Pool 14
+42	Gangs Of Southe	Uppal Southened	
+43	GHAMROJ FC	"Ghamroj, Gurgaon"	
+44	Gladiators	Sector-40	Pool 15
+45	Global fc	"Laxman Vihar, Gurgaon"	
+46	INAZUMA STRIKERS	Jal Vayu Towers	
+47	INVINCIBLES F.C	Sector - 7	Pool 16
+48	Predators FC	Sector-40	
+49	M.D.A RAJ NAGAR FOOTBALL TEAM	"Raj Nagar, Gurgaon"	
+50	MASTER BLASTER	Sector-7	Pool 17
+51	Nambardar	Sector 56	
+52	POLICE LINE FC	"Police Lines, Gurgaon"	
+53	leo fc	"Sector-7, Gurgaon"	Pool 18
+54	PYLON PYTHONS	"Sector-14, Gurgaon"	
+55	R.C. VILLA	"Sector-45, Gurgaon"	
+56	Real Champions	"Bahadurgarh, Gurgaon"	Pool 19
+57	ROTARY FC	"Sector-17A, Gurgaon"	
+58	Royal Cheetah	New Palam Vihar	
+59	S.E.F.C	Sushant Estate	Pool 20
+60	S.S united	"Shubash Nagar,Gurgaon"	
+61	Salwan FC	"Sector-56, Gurgaon"	
+62	SCR	Sector 4	Pool 21
+63	Sehwag Sports Academy	"SISJ, Jhajjar,Gurgaon"	
+64	Spiron X	Sector 21	
+65	St. Soldier FC	Palam Vihar	Pool 22
+66	Stallion FC	Sector 45	
+67	TEAM UMANG	Sec 47 Gurgaon	
+68	THE EXPENDABLES	"Sector-9A, Gurgaon"	Pool 23
+69	United D7	"South City -II, Sector 49"	
+70	Football Dominators	"Sector-56, Gurgaon"	
+71	yuytgjht(JV Cubs)	Jalvayu  Towers Sec-56	Pool 24
+72	40's spartan	"Sector-40, Gurgaon"	
+73	Dynamos FC	"Sector-5, Gurgaon "	
+74	CLASSIC  11 FC	Mayfield Garden	Pool 25
+75	Sehwagians	"SISJ, Jhajjar,Gurgaon"	

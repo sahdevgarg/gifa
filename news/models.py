@@ -9,7 +9,7 @@ class News(models.Model):
     """
     user = models.ForeignKey(User,verbose_name=_('Author'))
     title = models.CharField(_('title*'), max_length=191)
-    slug = models.SlugField(max_length=191, unique=True)
+    slug = models.SlugField(max_length=191, unique=False)
     content = models.TextField(blank=True, help_text=_("1: Styling should not be applied on empty paragraphs and para containing image or iframe.<br/> 2: Font Size -> Bold behaves different from Bold -> Font Size (First apply size then bold)"))
     coverimage = models.CharField(max_length=200)
     team_a = models.ForeignKey(Teams,related_name="Team A+",null=True,blank=True)

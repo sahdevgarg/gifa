@@ -50,6 +50,7 @@ urlpatterns = [
     url(r'^api/image_enable/',SaveImage.as_view()),
     url(r'^api/image_reject/',RejectImage.as_view()),
     url(r'^sponsors.htm',TemplateView.as_view(template_name="sponsers.html")),
+    url(r'^rules.htm',TemplateView.as_view(template_name="rules.html")),
     url(r'^thankyou.htm', TemplateView.as_view(template_name="thankyou.html")),
     url(r'^venue/delhi.htm', TemplateView.as_view(template_name="venue_delhi.html"),{'html_id':'venue'}),
     url(r'^venue/gurgaon.htm', TemplateView.as_view(template_name="venue_gurgaon.html"),{'html_id':'venue'}),

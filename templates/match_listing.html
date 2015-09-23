@@ -17,13 +17,13 @@
         </div>
     
        <div class="col-sm-5 hidden-sm hidden-xs" style="text-align:right; padding-right: 0px;">
-            <a href="http://www.hindustantimes.com/" class=" "><img src="{{STATIC_URL}}image/ht-logo.png"></a><p style="color: #fff; font-size:10px;margin-top: 20px; padding-right: 10px;">Powered by</p>
+            <a href="http://www.hindustantimes.com/" target="_blank" class=" "><img src="{{STATIC_URL}}image/ht-logo.png"></a><p style="color: #fff; font-size:10px;margin-top: 20px; padding-right: 10px;">Powered by</p>
           <ul style="margin:0px; padding: 0;margin-bottom: 30px;">
                 <li style="list-style-type:none; display: inline-block;">
-                  <a href="http://olx.in/"><img src="{{STATIC_URL}}image/olx-01.png" style="width:48px;"></a>
+                  <a href="http://www.olx.in/" target="_blank"><img src="{{STATIC_URL}}image/olx-01.png" style="width:48px;"></a>
                 </li>
                 <li style="list-style-type:none; display: inline-block; margin-left: 20px;">
-                  <a href="http://www.saregroup.com/"><img src="{{STATIC_URL}}image/saare-home.png"></a>
+                  <a href="http://www.saregroup.com/" target="_blank"><img src="{{STATIC_URL}}image/saare-home.png"></a>
                 </li>
           </ul>
 
@@ -48,10 +48,15 @@
   <div class="col-lg-9 col-md-8 news-detail">
 
 <h2>{{city}} Matches</h2>
+{% if city == "Delhi" %}
+<h5 style="color:#222">Teams who have registered in Delhi will have their matches at <a href="/venue/delhi.htm">DPS R.K Puram</a></h5>
+{% else %}
+<h5 style="color:#222">Teams who have registered in Gurgaon will have their matches at <a href="/venue/gurgaon.htm">Ansal University</a></h5>
+{% endif %}
 
 <br/>
 {% if city == "Gurgaon" %}
-<ul class=" match nav nav-tabs">
+<ul class=" match nav nav-pills">
       <li {% if match_list.number == 1 %} class="active" {% endif %}><a href="?page=1&city=Gurgaon"  style="padding: 10px 30px;">Sept 26</a></li>
       <li {% if match_list.number == 2 %} class="active" {% endif %}><a href="?page=2&city=Gurgaon"  style="padding: 10px 30px;">Sept 27</a></li>
       <li {% if match_list.number == 3 %} class="active" {% endif %}><a href="?page=3&city=Gurgaon"  style="padding: 10px 30px;">Oct 3</a></li>
@@ -59,7 +64,7 @@
 </ul>
 {% endif %}
 {% if city == "Delhi" %}
-<ul class=" match nav nav-tabs" style="padding-left: 20px;margin-top:20px">
+<ul class=" match nav nav-pills" style="padding-left: 20px;margin-top:20px">
       <li  {% if match_list.number == 1 %} class="active" {% endif %}><a href="?page=1&city=Delhi"  style="padding: 10px 30px;">Sept 26</a></li>
       <li  {% if match_list.number == 2 %} class="active" {% endif %}><a href="?page=2&city=Delhi"  style="padding: 10px 30px;">Sept 27 (morning)</a></li>
       <li  {% if match_list.number == 3 %} class="active" {% endif %}><a href="?page=3&city=Delhi"  style="padding: 10px 30px;">Sept 27 (evening)</a></li>
@@ -67,6 +72,7 @@
 </ul>
 {% endif %}
 {% if match_list %}
+<br/>
 <h4>{{match_list.0.match_date|date:"F d, Y"}}</h4>
 {% with match_list|slice:"0:40" as match_list%}
 {% include "matchlist_data.html"%}

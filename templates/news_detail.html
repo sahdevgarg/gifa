@@ -2,12 +2,13 @@
 
 {% block content%}
   {% if preview %}
-    <div class="container" style="background-color:#D6D6D6;margin: 4%;height: 90px;position: absolute;top: 0;z-index: 99999;margin-top: 0;left: 4px;margin-top: 51px;">
+    <div class="container" style="background-color: #D6D6D6;height: 90px;position: fixed;z-index: 99999;margin-top: 0;left: 4px;margin-top: 51px;width: 100%;bottom: 0px;text-align: center;">
       <center style="font-size:21px">This is a preview copy </center>
      
       
     {% if request.user.is_superuser %}
       <a href="/api/news_enable/?news_id={{news.id}}" class="btn btn-success">Submit</a>
+      <a href="/edit/article{{news.id}}.htm" class="btn btn-default" style="margin:0 20px">Edit</a>
       <a href="/api/news_reject/?news_id={{news.id}}" class="btn btn-danger">Reject</a>
     {% else %}
     <a href="/edit/article{{news.id}}.htm" class="btn btn-warning">Edit</a>

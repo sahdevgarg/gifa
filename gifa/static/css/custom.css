@@ -207,6 +207,11 @@ body {
       height:auto;
       margin-bottom:10px;
     }
+    .left-more-news .media-left a{
+      max-height:196px;
+      overflow: hidden;
+      display: block;
+    }
 
     .navbar-header .navbar-right li a {
     display: inline-block;
@@ -237,7 +242,7 @@ body {
  .match.nav-tabs > li > a {color: black;background-color: #fff;}
  .match.nav-tabs > li.active > a, .match.nav-tabs > li:hover > a {color: #fff;background-color: #007CB0;}
 .post-content img {
-width: 100%;
+max-width: 100%;
 height: auto;
 }
 .post-content {margin-bottom: 40px;}

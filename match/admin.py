@@ -40,6 +40,15 @@ class MatchAdmin(admin.ModelAdmin):
         if not team_a_goal2:
             team_a_goal2 = 0;
         team_a.total_goal = team_a_goal1 + team_a_goal2
+
+        team_a_goal_face1 = (Match.objects.filter(team_a=team_a,result_type__in=[2,3]).aggregate(Sum('team_b_goal')))["team_b_goal__sum"]
+        team_a_goal_face2 = (Match.objects.filter(team_b=team_a,result_type__in=[2,3]).aggregate(Sum('team_a_goal')))["team_a_goal__sum"]
+        if not team_a_goal_face1:
+            team_a_goal_face1 = 0;
+        if not team_a_goal2:
+            team_a_goal_face2 = 0;
+        team_a.total_goal_faced = team_a_goal_face1 + team_a_goal_face2
+        
         team_b_goal1 = (Match.objects.filter(team_a=team_b,result_type__in=[2,3]).aggregate(Sum('team_a_goal')))["team_a_goal__sum"]
         team_b_goal2 = (Match.objects.filter(team_b=team_b,result_type__in=[2,3]).aggregate(Sum('team_b_goal')))["team_b_goal__sum"]
         if not team_b_goal1:
@@ -47,6 +56,14 @@ class MatchAdmin(admin.ModelAdmin):
         if not team_b_goal2:
             team_b_goal2 = 0;
         team_b.total_goal = team_b_goal1 + team_b_goal2
+
+        team_b_goal_face1 = (Match.objects.filter(team_a=team_b,result_type__in=[2,3]).aggregate(Sum('team_b_goal')))["team_b_goal__sum"]
+        team_b_goal_face2 = (Match.objects.filter(team_b=team_b,result_type__in=[2,3]).aggregate(Sum('team_a_goal')))["team_a_goal__sum"]
+        if not team_b_goal_face1:
+            team_b_goal_face1 = 0;
+        if not team_b_goal2:
+            team_b_goal_face2 = 0;
+        team_b.total_goal_faced = team_b_goal_face1 + team_b_goal_face2
 
         team_a.save();
         team_b.save();

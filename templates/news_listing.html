@@ -17,7 +17,7 @@
   {% with news.get_absolute_url as news_url%}
   <div class="media">
       <div class="media-left">
-        <a href="{{news_url}}">
+        <a class="news-image-a" href="{{news_url}}" style="max-height:108px;overflow:hidden;display:inline-block">
           <img class="media-object center-cropped" src="{{news.coverimage}}" data-holder-rendered="true">
         </a>
       </div>

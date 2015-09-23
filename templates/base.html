@@ -51,7 +51,13 @@
           </ul>
         </li>
         <li {% if html_id == "team" %}class="active"{% endif %}><a href="/teams/listing.htm">Teams</a></li>
-        <li {% if html_id == "gallery"%}class="active"{% endif %}><a href="/gallery.htm">Photo Gallery</a></li>
+         <li {% if html_id == "gallery" %}class="active dropdown" {% else %} class="dropdown" {% endif %}>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Photo Gallery <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/gallery.htm">Gallery</a></li>
+            <li><a href="/gallery.htm?trivia=True">Trivia</a></li>
+          </ul>
+        </li>
         <li {% if html_id == "sponser" %}class="active"{% endif %}><a href="/sponsors.htm">Sponsors</a></li>   
         <li {% if html_id == "contact" %}class="active"{% endif %}><a href="/contact.htm">Contact Us</a></li>    
       </ul>     
@@ -211,7 +217,7 @@
       }
       window.fbAsyncInit = function() {
         FB.init({
-          appId      : '1439528452994485',
+          appId      : '1517841141791610',
           cookie     : true, 
           xfbml      : true,  
           version    : 'v2.2'

@@ -12,7 +12,11 @@
   <div class="row" style="  border-top: 1px solid #ddd;   padding-top: 20px;">
 
   <div class="col-lg-9 col-md-8 left-more-news">
-  <h3 style="margin-top:0;">Latest Images</h3>
+  {% if trivia %}
+  <h3 style="margin-top:0;">Trivia</h3>
+  {% else %}
+  <h3 style="margin-top:0;">Photo Gallery</h3>
+  {% endif %}
 <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" style="    z-index: 9999;" >
     <!-- The container for the modal slides -->

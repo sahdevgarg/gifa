@@ -52,7 +52,6 @@ class Imageview(TemplateView):
 		user = get_user_model().objects.get(email=request.user.email)
 		done = request.POST.get('done', False)
 		submit = request.POST.get('save', False)
-		fb_id = request.POST.get('fb_id', False)
 		name = u'{name}.{ext}'.format(
 	        name=uuid.uuid4().hex,
 	        ext=os.path.splitext(request.FILES['image'].name)[1].strip('.')
@@ -66,7 +65,7 @@ class Imageview(TemplateView):
 			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user);
 			return HttpResponseRedirect('/gallery.htm')
 		if done:
-			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user,enabled=False,fb_id=fb_id);
+			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user,enabled=False);
 			return HttpResponseRedirect('/profile/'+(self.request.user.first_name).lower()+'/'+str(self.request.user.id)+'.htm')
 	@csrf_exempt
 	def dispatch(self, *args, **kwargs):
@@ -76,7 +75,11 @@ class ImageListview(TemplateView):
 	template_name = "gallery.html"
 	def get(self,*args, **kwargs):
 		context = super(ImageListview, self).get_context_data(**kwargs)
-		image_list = Image.objects.filter(enabled=True).order_by('-modified_date');
+		context["trivia"] = self.request.GET.get('trivia',False)
+		if context["trivia"]:
+			image_list = Image.objects.filter(enabled=True,tags="trivia").order_by('-modified_date');
+		else:
+			image_list = Image.objects.filter(enabled=True).order_by('-modified_date');
 		paginator = Paginator(image_list, 20)
 		page = self.request.GET.get('page',"")
 		try:

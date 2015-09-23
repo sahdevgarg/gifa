@@ -4,6 +4,7 @@ from django.conf import settings
 
 
 class PlayerAdmin(admin.ModelAdmin):
-    list_display = ("name","email")
+    list_display = ("name","email","team")
+    search_fields = ['name','team__team_name']
 
 admin.site.register(Player,PlayerAdmin)

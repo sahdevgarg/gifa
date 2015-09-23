@@ -20,7 +20,6 @@ import os
 class NewsImageview(JSONView):
 
     def post(self, request, *args, **kwargs):
-    	print "aaaaaa",request.POST["title"]
     	name = u'{name}.{ext}'.format(
             name=uuid.uuid4().hex,
             ext=os.path.splitext(request.FILES['image'].name)[1].strip('.')
@@ -154,7 +153,10 @@ class NewsdetailView(TemplateView):
 		if self.request.user.is_superuser or self.request.user ==context["news"].user:
 			context["preview"] = self.request.GET.get('preview', "")
 		else:
-			context["preview"] = ""
+			context["preview"] = "";
+		if self.request.user.is_superuser:
+		 	context["preview"] = True
+
 		return context
 
 class SaveNews(JSONView):

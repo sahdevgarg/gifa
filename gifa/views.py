@@ -35,5 +35,6 @@ class IndexView(TemplateView):
     def get(self,*args, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['news_list'] = News.objects.filter(enabled=True).order_by('-modified_date')[:11]
+        context['featured_news'] = FeaturedNews.objects.filter(enabled=True)[:3]
         context["teams_list"] = Teams.objects.filter().order_by('-win')[:12]
         return self.render_to_response(context)

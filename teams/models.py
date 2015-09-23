@@ -18,6 +18,7 @@ class Teams(models.Model):
     total_points = models.PositiveIntegerField(default=0,editable = False)
     games_played = models.PositiveIntegerField(default=0,editable = False)
     total_goal = models.PositiveIntegerField(default=0,editable = False)
+    total_goal_faced = models.PositiveIntegerField(default=0,editable = False)
     win = models.PositiveIntegerField(default=0,editable = False)
     draw = models.PositiveIntegerField(default=0,editable = False)
     loss = models.PositiveIntegerField(default=0,editable = False)

@@ -2,6 +2,13 @@
 {% block content%}
 
      <!-- Page Content -->
+     <div class="container" style="background-color: #D6D6D6;height: 90px;position: fixed;z-index: 99999;margin-top: 0;left: 4px;margin-top: 51px;width: 100%;bottom: 0px;text-align: center;">     
+      
+    {% if request.user.is_superuser %}
+      <a href="/api/image_disable/?image_id={{image.id}}" class="btn btn-danger">Reject</a>
+    {% endif %}
+  
+      </div>
 <div class="container" style="background:rgba(0,0,0, 0.1);padding: 0px; ">
       {% include "header.html"%}
 </div>

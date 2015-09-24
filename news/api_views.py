@@ -7,8 +7,8 @@ class NewsListApiView(generics.ListAPIView):
 	model = News
 	def get(self, request, *args, **kwargs):
 		page = self.request.REQUEST.get('page', 1)
-		no_records = self.request.REQUEST.get('no_records', 12)
-		news_list = News.objects.filter(enabled=True)
+		no_records = self.request.REQUEST.get('no_records', 10)
+		news_list = News.objects.filter(enabled=True).order_by('-modified_date')
 		paginator = Paginator(news_list, no_records)
 		try:
 			page = paginator.page(page)

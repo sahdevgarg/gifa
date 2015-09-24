@@ -34,12 +34,10 @@
     <div class="news_metadata col-sm-6">
       By <a {% if news.fb_id %}href="{{news.fb_id}}"{%else%}href="#"{% endif %}>{{news.user}}</a>
       <p class="news_time">{{news.created_date}}</p>
+    <a class="btn btn-social-icon btn-facebook" id="fb_share"><i class="fa fa-facebook fa-lg"></i></a>
+    <a class="btn btn-social-icon  btn-google" id="go_share" ><i class="fa fa-google-plus fa-lg"></i></a>
+    <a class="btn btn-social-icon  btn-twitter" id="twt_share"><i class="fa fa-twitter fa-lg"></i></a>
     </div>
-    <!-- <div class= "col-sm-6">
-    <span class='st_googleplus_large' displayText='Google +'></span>
-      <span class='st_twitter_large' displayText='Tweet'></span>
-      <span class='st_facebook_large' displayText='Facebook'></span>
-    </div> -->
     </div>
 
       <img style="width:100%;" class="img-responsive" src="{{news.coverimage}}" alt="">
@@ -95,3 +93,27 @@
     <!-- /.container -->
 </div>
 {% endblock content%}
+{% block javascript %}
+  {{ block.super }}
+  <script>
+  $(document).ready(function(){
+    var share_title= "{{news.title}}"
+    share_url = document.location.host+"{{news.get_absolute_url}}"
+    share_pic = document.location.host+"{{news.coverimage}}"
+$("#fb_share").click(function(){
+    var post_data = {"method": 'feed',"name":share_title,"description":share_title,"link": share_url,"picture":share_pic}; 
+        FB.ui( post_data, function(response){
+        });
+      })
+      $("#twt_share").click(function(){
+                  var tweetURI = "https://twitter.com/intent/tweet?text="+ share_title +" "+ share_url ;
+                  window.open(tweetURI);
+              });
+
+        $("#go_share").click(function(){
+            var gplusURI = "https://plus.google.com/share?url="+ share_url;
+            window.open(gplusURI);
+        }) 
+})
+</script>
+{% endblock javascript %}

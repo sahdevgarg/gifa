@@ -8,7 +8,7 @@ class NewsListingSerializer(serializers.ModelSerializer):
 	url = serializers.SerializerMethodField()
 	class Meta:
 		model = News
-		fields = ('id', 'user', 'title','coverimage','created_date','url')
+		fields = ('id', 'user', 'title','coverimage','created_date','content','url')
 
 
 	def get_url(self, obj):

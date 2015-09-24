@@ -79,7 +79,7 @@ class ImageListview(TemplateView):
 		if context["trivia"]:
 			image_list = Image.objects.filter(enabled=True,trivia=True).order_by('-modified_date');
 		else:
-			image_list = Image.objects.filter(enabled=True).order_by('-modified_date');
+			image_list = Image.objects.filter(enabled=True,trivia=False).order_by('-modified_date');
 		paginator = Paginator(image_list, 20)
 		page = self.request.GET.get('page',"")
 		try:

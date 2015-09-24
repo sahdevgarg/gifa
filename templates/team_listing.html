@@ -30,8 +30,10 @@
          </div>
       <div class="clearfix"></div>
        <ul class="region nav nav-tabs" style="padding-left: 20px;">
-      <li {% if city == "Delhi" %} class="active"{% endif%}><a href="/teams/listing.htm?city=Delhi"  style="padding: 10px 30px;">Delhi</a></li>
-      <li {% if city == "Gurgaon" %} class="active"{% endif%}><a href="/teams/listing.htm?city=Gurgaon">Gurgaon</a></li>
+      <li {% if city == "Delhi" and group == "junior"%} class="active"{% endif%}><a href="/teams/listing.htm?city=Delhi&group=junior"  style="padding: 10px 30px;">Delhi(Junior)</a></li>
+      <li {% if city == "Delhi" and group == "senior"%} class="active"{% endif%}><a href="/teams/listing.htm?city=Delhi&group=senior"  style="padding: 10px 30px;">Delhi(Senior)</a></li>
+      <li {% if city == "Gurgaon" and group == "junior" %} class="active"{% endif%}><a href="/teams/listing.htm?city=Gurgaon&group=junior">Gurgaon(Junior)</a></li>
+       <li {% if city == "Gurgaon" and group == "senior" %} class="active"{% endif%}><a href="/teams/listing.htm?city=Gurgaon&group=senior">Gurgaon(Senior)</a></li>
       </ul>
 
 
@@ -69,15 +71,17 @@
       <th class="sort hidden-xs" data-sort="draw" >Draw</th>
       <th class="sort hidden-xs" data-sort="win" >Win</th>
       <th class="sort hidden-xs" data-sort="loss" >Loss</th>
-      <th class="sort hidden-xs" data-sort="group">Group</th>
       {% if city == "Gurgaon" %}
       <th class="sort hidden-xs" data-sort="pool">Pool</th>
       {% endif %}
+      <th class="sort hidden-xs" data-sort="group">Group</th>
+      
       <th class="hidden-lg hidden-md hidden-sm" data-sort="group">Stats</th>
     </tr>
   </thead>
   <tbody class="list">
   {% for team in team_list %}
+  {% if not forloop.last %}
     <tr>
       <td class="name">
       <a href="{{team.get_absolute_url}}">{{team.team_name|title}}</a>
@@ -93,6 +97,9 @@
       <td class="draw hidden-xs">{{team.draw}}</td>
       <td class="win hidden-xs" >{{team.win}}</td>
       <td class="loss hidden-xs">{{team.loss}}</td>
+      {% if city == "Gurgaon" %}
+      <td class="pool hidden-xs">{{team.pool_no}}</td>
+      {% endif %}
       {% if team.team_group == 1%}
       <td class="group hidden-xs">Senior</td>
       {% else %}
@@ -106,8 +113,12 @@
         <div><b>Draw:</b> {{team.draw}}</div>
         <div><b>Win:</b> {{team.win}}</div>
         <div><b>Loss:</b> {{team.loss}}</div>
+        {% if city == "Gurgaon" %}
+      <div><b>Pool:</b> {{team.pool_no}}</div>
+      {% endif %}
       </td>
     </tr>
+    {% endif %}
   {% endfor %}
   </tbody>
 </table> 
@@ -145,7 +156,7 @@
  <script type="text/javascript">
   $("document").ready(function(){
     var options = {
-    valueNames: [ 'name', 'city' ,'manager' , 'draw' , 'loss' , 'win' , 'game','total_goal','total_goal_faced','group'],
+    valueNames: [ 'name', 'city' ,'manager' , 'draw' , 'loss' , 'win' , 'game','total_goal','total_goal_faced','group','pool'],
     page : 350
         };
     var hackerList = new List('teams', options,300);

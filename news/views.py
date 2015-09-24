@@ -137,15 +137,12 @@ class Editarticleview(TemplateView):
 		submit = request.POST.get('save', False)
 		if preview:
 			news = News.objects.filter(id=data["news_id"]).update(title=data["title"],coverimage=media_path,content=data["news_content"],tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=False,rejected=False);
-			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a);
 			return HttpResponseRedirect('/news/'+str(news_obj.slug)+'/article'+str(news_obj.id)+'.htm?preview=True')
 		if submit:
 			news = News.objects.filter(id=data["news_id"]).update(title=data["title"],coverimage=media_path,content=data["news_content"],tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=True,rejected=False);
-			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a);
 			return HttpResponseRedirect('/news/'+str(news_obj.slug)+'/article'+str(news_obj.id)+'.htm')
 		if done:
 			news = News.objects.filter(id=data["news_id"]).update(title=data["title"],coverimage=media_path,content=data["news_content"],tags=data["tags"],seo_desc=data["seodesc"],team_a=team_a,team_b=team_b,slug=slug,enabled=False,rejected=False);
-			image = Image.objects.get_or_create(title=data["title"],image=media_path,tags=data["tags"],team=team_a,enabled=False);
 			return HttpResponseRedirect('/profile/'+(self.request.user.first_name).lower()+'/'+str(self.request.user.id)+'.htm')
 	@csrf_exempt
 	def dispatch(self, *args, **kwargs):

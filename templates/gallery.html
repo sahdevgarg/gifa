@@ -1,6 +1,41 @@
 {% extends "base.html" %}
 {% block content%}
 
+{% if trivia %}
+<style>
+#links a {
+max-width: 280px !important;
+max-height: 280px !important;
+margin: 10px;
+}
+
+#links a img {
+max-width: 280px !important;
+max-height: 280px !important;
+}
+@media (max-width: 480px) {
+div#links a {
+    padding: 4px !important;
+    width: 100%;
+}}
+
+@media (min-width: 1220px) {
+#links a {
+max-width: 240px !important;
+max-height: 240px !important;
+margin: 10px;
+}
+
+#links a img {
+max-width: 240px !important;
+max-height: 240px !important;
+}
+
+}
+
+</style>
+{% endif %}
+
      <!-- Page Content -->
 <div class="container" style="background:rgba(0,0,0, 0.1);padding: 0px; ">
       {% include "header.html"%}

@@ -59,13 +59,20 @@ class Imageview(TemplateView):
 		image_path = os.path.join(settings.MEDIA_ROOT, name)
 		media_path = os.path.join(settings.MEDIA_URL, name)
 		destination = open(image_path, 'wb+')
+		
+		trivia1 = False
+		try:
+			trivia1=data["trivia"]
+		except:
+			pass
+
 		for chunk in request.FILES['image'].chunks():
 		        destination.write(chunk)
 		if submit:
-			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user,trivia=data["trivia"]);
+			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user,trivia=trivia1);
 			return HttpResponseRedirect('/gallery.htm')
 		if done:
-			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user,enabled=False,trivia=data["trivia"]);
+			news = Image.objects.create(title=data["title"],image=media_path,tags=data["tags"],team=team,user=user,enabled=False,trivia=trivia1);
 			return HttpResponseRedirect('/profile/'+(self.request.user.first_name).lower()+'/'+str(self.request.user.id)+'.htm')
 	@csrf_exempt
 	def dispatch(self, *args, **kwargs):

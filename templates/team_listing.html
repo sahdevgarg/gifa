@@ -29,11 +29,11 @@
 
          </div>
       <div class="clearfix"></div>
-       <ul class="region nav nav-tabs" style="padding-left: 20px;">
-      <li {% if city == "Delhi" and group == "junior"%} class="active"{% endif%}><a href="/teams/listing.htm?city=Delhi&group=junior"  style="padding: 10px 30px;">Delhi(Junior)</a></li>
-      <li {% if city == "Delhi" and group == "senior"%} class="active"{% endif%}><a href="/teams/listing.htm?city=Delhi&group=senior"  style="padding: 10px 30px;">Delhi(Senior)</a></li>
-      <li {% if city == "Gurgaon" and group == "junior" %} class="active"{% endif%}><a href="/teams/listing.htm?city=Gurgaon&group=junior">Gurgaon(Junior)</a></li>
-       <li {% if city == "Gurgaon" and group == "senior" %} class="active"{% endif%}><a href="/teams/listing.htm?city=Gurgaon&group=senior">Gurgaon(Senior)</a></li>
+       <ul class="region nav nav-tabs" style="padding-left: 20px; margin-top:20px;">
+      <li {% if city == "Delhi" and group == "junior"%} class="active"{% endif%}><a href="/teams/listing.htm?city=Delhi&group=junior"  style="padding: 10px 30px;">Delhi (Junior)</a></li>
+      <li {% if city == "Delhi" and group == "senior"%} class="active"{% endif%}><a href="/teams/listing.htm?city=Delhi&group=senior"  style="padding: 10px 30px;">Delhi (Senior)</a></li>
+      <li {% if city == "Gurgaon" and group == "junior" %} class="active"{% endif%}><a href="/teams/listing.htm?city=Gurgaon&group=junior">Gurgaon (Junior)</a></li>
+       <li {% if city == "Gurgaon" and group == "senior" %} class="active"{% endif%}><a href="/teams/listing.htm?city=Gurgaon&group=senior">Gurgaon (Senior)</a></li>
       </ul>
 
 
@@ -59,7 +59,13 @@
 <h5 style="color:#222">The venue for all the Teams registered in Gurgaon will be <a href="/venue/gurgaon.htm">Ansal University.</a></h5>
 {% endif %}
 <br/>
-<input class="search form-control" placeholder="Search" style="margin:10px 0px" />
+<!--<input class="search form-control" placeholder="Search" style="margin:10px 0px" />-->
+<style>
+/*
+table.table tbody.list tr:last-of-type {
+display:none;
+}*/ 
+</style>
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
@@ -81,16 +87,19 @@
   </thead>
   <tbody class="list">
   {% for team in team_list %}
-  {% if not forloop.last %}
     <tr>
       <td class="name">
-      <a href="{{team.get_absolute_url}}">{{team.team_name|title}}</a>
+      <a href="{{team.get_absolute_url}}">{{team.team_name}}</a>
       <div class="hidden-lg hidden-md hidden-sm" >
-      <b>Manager:</b> {{team.team_manager|title}} <br/>
-      <b>Group:</b> {% if team.team_group == 1%}Senior{% else %}Junior{% endif %}
+      <b>Manager:</b> {{team.team_manager}} <br/>
+      <b>Group:</b> {% if team.team_group == 1%}Senior{% else %}Junior{% endif %} <br/><br/>
+	{% if city == "Gurgaon" %}
+      	  <div><b>Pool:</b> {{team.pool_no}}</div>
+      	{% endif %}
+
       </div>
       </td>
-      <td class="manager hidden-xs">{{team.team_manager|title}}</td>
+      <td class="manager hidden-xs">{{team.team_manager}}</td>
       <td class="game hidden-xs">{{team.games_played}}</td>
       <td class="total_goal hidden-xs">{{team.total_goal}}</td>
       <td class="total_goal_faced hidden-xs">{{team.total_goal_faced}}</td>
@@ -113,20 +122,11 @@
         <div><b>Draw:</b> {{team.draw}}</div>
         <div><b>Win:</b> {{team.win}}</div>
         <div><b>Loss:</b> {{team.loss}}</div>
-        {% if city == "Gurgaon" %}
-      <div><b>Pool:</b> {{team.pool_no}}</div>
-      {% endif %}
       </td>
     </tr>
-    {% endif %}
   {% endfor %}
   </tbody>
 </table> 
-{% if team_list.has_next %}
-    <div style="text-align:center; padding: 10px;">
-      <a href="?page={{ team_list.next_page_number }}">More Teams</a>
-    </div>
-  {% endif %}
 
   </div>
 
@@ -154,14 +154,14 @@
   {{ block.super }}
  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
  <script type="text/javascript">
-  $("document").ready(function(){
+ /* $("document").ready(function(){
     var options = {
     valueNames: [ 'name', 'city' ,'manager' , 'draw' , 'loss' , 'win' , 'game','total_goal','total_goal_faced','group','pool'],
     page : 350
         };
     var hackerList = new List('teams', options,300);
 
-  })
+  })*/
   </script>
 {% endblock javascript %}
        

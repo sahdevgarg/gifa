@@ -144,6 +144,8 @@ document.getElementById('links').onclick = function (event) {
                 share_title = this.list[index].getAttribute('title')
                 share_href = document.location.host+this.list[index].getAttribute('href')
                 share_url = document.location.host+"/gallery/"+this.list[index].getAttribute('data-imageId')+".htm";
+                ga('create', 'UA-67853897-1', 'auto');
+                ga('send', 'pageview');
             node.empty();
             if (text) {
                 node[0].appendChild(document.createTextNode(text));

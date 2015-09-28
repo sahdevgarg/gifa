@@ -8,6 +8,7 @@ class MatchListingSerializer(serializers.ModelSerializer):
 	team_a_name = serializers.SerializerMethodField()
 	team_b_name = serializers.SerializerMethodField()
 	winning_team = serializers.SerializerMethodField()
+	
 	class Meta:
 		model = Match
 	def get_team_a_name(self,obj):

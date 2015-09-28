@@ -133,17 +133,6 @@ max-height: 240px !important;
   <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
   <script>
   $(document).ready(function(){
-//   blueimp.Gallery(
-//     document.getElementById('links'), {
-//         onslide: function (index, slide) {
-//             var text = this.list[index].getAttribute('data-description'),
-//                 node = this.container.find('.description');
-//             node.empty();
-//             if (text) {
-//                 node[0].appendChild(document.createTextNode(text));
-//             }
-//         }
-// });
 
 document.getElementById('links').onclick = function (event) {
     event = event || window.event;

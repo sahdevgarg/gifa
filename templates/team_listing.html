@@ -2,12 +2,12 @@
 {% block content%}
 <div class="container" style="background:rgba(0,0,0, 0.1);padding: 0px; ">
 <div class="header" style="padding: 20px 0px 0px; min-height: 240px; ">
-      <div class="col-sm-5" style="padding-left: 0px;">
+      <div class="col-sm-7" style="padding-left: 0px;">
           <img class="pull-left" src="{{STATIC_URL}}image/gifa-logo.png" style=" ">
           <div class="reg-area">
-            <h3>GREAT INDIAN</h3>
-            <h2>FOOTBALL ACTION</h2>
-            <h1>IS BACK!</h1>
+           <h3 style="padding-top:20px">THE FOOTBALL FESTIVAL BEGINS!</h3>
+            <h2 style="font-size:26px; margin-top:10px;">COME, CHEER FOR YOUR HOME TEAM</H2>
+<h4 style="font-weight:bold;    color: darkorange;">* Fun, food and games for the entire family</h4>
           </div>
       </div>
         <div class="col-sm-2">
@@ -74,11 +74,11 @@ display:none;
       <th class="sort hidden-xs" data-sort="game" >Games Played</th>
       <th class="sort hidden-xs" data-sort="total_goal" >Goals For</th>
       <th class="sort hidden-xs" data-sort="total_goal_faced" >Goals Against</th>
-      <th class="sort hidden-xs" data-sort="Points" >Points</th>
-
       <th class="sort hidden-xs" data-sort="draw" >Draw</th>
       <th class="sort hidden-xs" data-sort="win" >Win</th>
       <th class="sort hidden-xs" data-sort="loss" >Loss</th>
+      <th class="sort hidden-xs" data-sort="Points" >Points</th>
+
       {% if city == "Gurgaon" %}
       <th class="sort hidden-xs" data-sort="pool">Pool</th>
       {% endif %}
@@ -105,10 +105,11 @@ display:none;
       <td class="game hidden-xs">{{team.games_played}}</td>
       <td class="total_goal hidden-xs">{{team.total_goal}}</td>
       <td class="total_goal_faced hidden-xs">{{team.total_goal_faced}}</td>
-      <td class="points hidden-xs">{{team.point}}</td>
       <td class="draw hidden-xs">{{team.draw}}</td>
       <td class="win hidden-xs" >{{team.win}}</td>
       <td class="loss hidden-xs">{{team.loss}}</td>
+      <td class="points hidden-xs">{{team.point}}</td>
+
       {% if city == "Gurgaon" %}
       <td class="pool hidden-xs">{{team.pool_no}}</td>
       {% endif %}
@@ -122,10 +123,11 @@ display:none;
         <div><b>Games Played:</b> {{team.games_played}}</div>
         <div><b>Goals For:</b> {{team.total_goal}}</div>
         <div><b>Goals Against:</b> {{team.total_goal_faced}}</div>
-        <div><b>Points:</b> {{team.point}}</div>
         <div><b>Draw:</b> {{team.draw}}</div>
         <div><b>Win:</b> {{team.win}}</div>
         <div><b>Loss:</b> {{team.loss}}</div>
+        <div><b>Points:</b> {{team.point}}</div>
+
       </td>
     </tr>
   {% endfor %}

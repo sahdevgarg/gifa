@@ -6,3 +6,4 @@ import json
 class PlayerListingSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Player
+		fields = ('name','total_goal','games_played')

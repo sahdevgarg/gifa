@@ -72,8 +72,10 @@ display:none;
       <th class="sort" data-sort="name" >Name</th>
       <th class="sort hidden-xs" data-sort="manager" >Manager's Name</th>
       <th class="sort hidden-xs" data-sort="game" >Games Played</th>
-      <th class="sort hidden-xs" data-sort="total_goal" >Goals</th>
-      <th class="sort hidden-xs" data-sort="total_goal_faced" >Goals Faced</th>
+      <th class="sort hidden-xs" data-sort="total_goal" >Goals For</th>
+      <th class="sort hidden-xs" data-sort="total_goal_faced" >Goals Against</th>
+      <th class="sort hidden-xs" data-sort="Points" >Points</th>
+
       <th class="sort hidden-xs" data-sort="draw" >Draw</th>
       <th class="sort hidden-xs" data-sort="win" >Win</th>
       <th class="sort hidden-xs" data-sort="loss" >Loss</th>
@@ -103,6 +105,7 @@ display:none;
       <td class="game hidden-xs">{{team.games_played}}</td>
       <td class="total_goal hidden-xs">{{team.total_goal}}</td>
       <td class="total_goal_faced hidden-xs">{{team.total_goal_faced}}</td>
+      <td class="points hidden-xs">{{team.point}}</td>
       <td class="draw hidden-xs">{{team.draw}}</td>
       <td class="win hidden-xs" >{{team.win}}</td>
       <td class="loss hidden-xs">{{team.loss}}</td>
@@ -117,8 +120,9 @@ display:none;
 
       <td class="hidden-lg hidden-md hidden-sm" width="50%">
         <div><b>Games Played:</b> {{team.games_played}}</div>
-        <div><b>Goals:</b> {{team.total_goal}}</div>
-        <div><b>Goals Faced:</b> {{team.total_goal_faced}}</div>
+        <div><b>Goals For:</b> {{team.total_goal}}</div>
+        <div><b>Goals Against:</b> {{team.total_goal_faced}}</div>
+        <div><b>Points:</b> {{team.point}}</div>
         <div><b>Draw:</b> {{team.draw}}</div>
         <div><b>Win:</b> {{team.win}}</div>
         <div><b>Loss:</b> {{team.loss}}</div>

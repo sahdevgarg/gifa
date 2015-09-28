@@ -16,9 +16,9 @@ class TeamsList(TemplateView):
 		context["city"] = self.request.GET.get('city','Delhi')
 		context["group"] = self.request.GET.get('group','junior')
 		if context["group"] == 'junior' :
-			context["team_list"] = Teams.objects.filter(enabled=True,city=context["city"],team_group=2).order_by('pool_no')
+			context["team_list"] = Teams.objects.filter(enabled=True,city=context["city"],team_group=2).order_by('pool_no','team_name')
 		if context["group"] == 'senior' :
-			context["team_list"] = Teams.objects.filter(enabled=True,city=context["city"],team_group=1).order_by('pool_no')
+			context["team_list"] = Teams.objects.filter(enabled=True,city=context["city"],team_group=1).order_by('pool_no','team_name')
 		return self.render_to_response(context)
 
 class TeamdetailView(TemplateView):

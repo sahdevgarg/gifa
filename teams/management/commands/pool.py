@@ -8,7 +8,7 @@ import csv
 from teams.models import Teams
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        f = open("pool-sr.txt")
+        f = open("pool-jr.txt")
         reader = csv.reader(f)
         j=0
         i=0

@@ -32,5 +32,9 @@ class Teams(models.Model):
     def get_absolute_url(self):
         return ('team_detail', (), {'slug': slugify(self.team_name), 'team_id': self.id})
 
+    @property
+    def point(self):
+        return self.win * 3 - self.loss
+
     def __unicode__(self):
 		return self.team_name

@@ -12,7 +12,7 @@ from datetime import datetime
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        f = open("Delhi-3.csv")
+        f = open("Delhi3.csv")
         reader = csv.reader(f)
         date = "2015-10-03"
         slot_type = 1

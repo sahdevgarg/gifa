@@ -43,8 +43,9 @@
   <thead>
     <tr>
       <th>Games Played</th>
-      <th>Goals</th>
-      <th>Goals Faced</th>
+      <th>Goals For</th>
+      <th>Goals Against</th>
+      <th>Points</th>
       <th>Draw</th>
       <th>Wins</th>
       <th>Loss</th>
@@ -55,6 +56,7 @@
       <td>{{team.games_played}}</td>
       <td>{{team.total_goal}}</td>
       <td>{{team.total_goal_faced}}</td>
+      <td>{{team.point}}</td>
       <td>{{team.draw}}</td>
       <td>{{team.win}}</td>
       <td>{{team.loss}}</td>
@@ -99,6 +101,12 @@
       {% if match.result_type == 4 %}
       <td>Canceled</td>
       {% endif %}
+       {% if match.result_type == 5 and match.winning_team == team %}
+      <td>Win Walkover</td>
+      {% endif %}
+      {% if match.result_type == 5 and match.winning_team != team %}
+      <td>Loss Walkover</td>
+      {% endif %}
       {% if match.result_type == 2 or match.result_type == 3 %}
       <td>{{match.team_b_goal}} - {{match.team_a_goal}}</td>
       {% else %}
@@ -124,6 +132,12 @@
       {% endif %}
       {% if match.result_type == 4 %}
       <td>Canceled</td>
+      {% endif %}
+      {% if match.result_type == 5 and match.winning_team == team %}
+      <td>Win Walkover</td>
+      {% endif %}
+      {% if match.result_type == 5 and match.winning_team != team %}
+      <td>Loss Walkover</td>
       {% endif %}
       {% if match.result_type == 2 or match.result_type == 3 %}
       <td>{{match.team_a_goal}} - {{match.team_b_goal}}</td>

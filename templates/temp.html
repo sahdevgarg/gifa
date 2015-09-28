@@ -21,7 +21,7 @@
             {% if match.result_type != 1 %}
             {% if match.result_type == 2 or match.result_type == 3 %}
             <div class="panel-footer" style="background:#6D9F36;text-align: center">
-            <h5 style="color: #fff;margin-top:0px"> Score {{match.team_a_goal}} - {{match.team_b_goal}}
+            <h5 style="color: #fff;margin-top:0px"> Score {{match.team_a_goal}} - {{match.team_b_goal}}</h5>
             {% endif %}
             {% if match.result_type == 2 %}
             <h5 style="color: #fff;margin-bottom:0px">{{match.winning_team.team_name|title}} Win</h5>
@@ -30,6 +30,15 @@
             {% elif match.result_type == 4 %}
             <div class="panel-footer" style="background:#C71C22;text-align: center">
             <h5 style="color: #fff;margin-bottom:0px"> Match Is Canceled</h5>
+            {% endif %}
+            {% if match.result_type == 5 %}
+            <div class="panel-footer" style="background:#6D9F36;text-align: center">
+            <h5 style="color: #fff;margin-top:0px">Walk Over</h5>
+            {% if match.walkover == 1 %}
+            <h5 style="color: #fff;margin-bottom:0px">{{match.team_a|title}} Win </h5>
+            {% elif match.walkover == 2%}
+            <h5 style="color: #fff;margin-bottom:0px">{{match.team_b|title}} Win </h5>
+            {% endif %}
             {% endif %}
             </div>
             {% endif %}

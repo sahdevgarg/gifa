@@ -10,7 +10,7 @@ from match.models import Match
 from player.models import Player
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        f = open("Delhijunior.csv")
+        f = open("Delhisenior.csv")
         reader = csv.reader(f)
         for row in f.readlines():
             data = row.split('\t')
@@ -26,7 +26,7 @@ class Command(BaseCommand):
             print "------------------------------------"
             try:
                 if team_name:
-                    team = Teams.objects.create(team_name=team_name,city=team_city,team_email=team_email,team_manager=team_man,team_manager_email=team_man_email,team_manager_mob=team_mob,locality=locality,team_group='2')
+                    team = Teams.objects.create(team_name=team_name,city=team_city,team_email=team_email,team_manager=team_man,team_manager_email=team_man_email,team_manager_mob=team_mob,locality=locality,team_group='1')
                 else:
                     pass
             except:
@@ -51,7 +51,7 @@ class Command(BaseCommand):
                 print "**********************************"
                 try:
                     if name:
-                        player = Player.objects.create(name=name,team=team,email=email,gendre=gendre,mobile_no=mobile_no,address=address,image=image,team_group='2')
+                        player = Player.objects.create(name=name,team=team,email=email,gendre=gendre,mobile_no=mobile_no,address=address,image=image,team_group='1')
                     else:
                         pass
                 except:

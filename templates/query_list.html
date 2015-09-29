@@ -5,6 +5,10 @@
   <div class="container" style="background:rgba(0,0,0, 0.1);padding: 0px;">
 
       {% include "header.html"%}
+       <ul class="region nav nav-tabs" style="padding-left: 20px; margin-top:20px;">
+      <li {% if q_type == "pending" %} class="active"{% endif%}><a href="/query-list.htm?q_type=pending"  style="padding: 10px 30px;">Pending</a></li>
+      <li {% if q_type == "resolved" %} class="active"{% endif%}><a href="/query-list.htm?q_type=resolved"  style="padding: 10px 30px;">Resolved</a></li>
+      </ul>
     </div>
 <div class="container" style="background:rgba(255,255,255, 0.8);padding: 0px;">
 <div class="container" style="background:rgba(255,255,255, 0.1);">         
@@ -12,7 +16,11 @@
 
   <div class="col-lg-9 col-md-8 left-more-news">
   {% if query_list %}
+  {% if q_type == "pending" %}
   <h3 style="margin-top:0;">Pending Query</h3>
+  {% else %}
+  <h3 style="margin-top:0;">Resolved Query</h3>
+  {% endif %}
   {% for query in query_list %}
   <div class="media">
       <div class="media-body">
@@ -23,8 +31,9 @@
         <li>By <a href="mailto:{{query.email}}" target="_top">{{query.email}}</a>
         </li>
         <li>{{query.created_date}}</li>
-
-
+        {% if not query.resolved %}
+        <a href="/api/query_resolved/?q_id={{query.id}}" class="btn btn-success">Resolved</a>
+        {% endif %}
       </div>
     </div>
 

@@ -15,11 +15,13 @@ class TeamsListingSerializer(serializers.ModelSerializer):
 		return obj.get_absolute_url()
 	
 	def get_total_points(self,obj):
-		return obj.win * 3 - obj.loss
+		return obj.win * 3 + obj.draw
 
 class TeamsDetailSerializer(serializers.ModelSerializer):
 	url = serializers.SerializerMethodField()
 	players = serializers.SerializerMethodField('get_team_player')
+	total_points = serializers.SerializerMethodField()
+
 	class Meta:
 		model = Teams
 		fields = ('id', 'team_name','total_points','games_played','total_goal','total_goal','total_goal_faced','win','loss','draw','url','players')
@@ -32,6 +34,8 @@ class TeamsDetailSerializer(serializers.ModelSerializer):
 		serializer_player = PlayerListingSerializer(player_list,many=True)
 		return serializer_player.data
 
+	def get_total_points(self,obj):
+		return obj.win * 3 + obj.draw
 class WinteamSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Teams

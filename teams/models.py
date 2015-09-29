@@ -34,7 +34,7 @@ class Teams(models.Model):
 
     @property
     def point(self):
-        return self.win * 3 - self.loss
+        return self.win * 3 + self.draw
 
     def __unicode__(self):
 		return self.team_name

@@ -3,7 +3,7 @@
 <div class="container" style="background:rgba(0,0,0, 0.1);padding: 0px; ">
 <div class="header" style="padding: 20px 0px 0px; min-height: 240px; ">
       <div class="col-sm-7" style="padding-left: 0px;">
-          <img class="pull-left" src="{{STATIC_URL}}image/gifa-logo.png" style=" ">
+          <img class="pull-left" src="{{STATIC_URL}}image/gifa-logo2.png" width="132px" height="251px" style=" ">
           <div class="reg-area">
             <h3 style="padding-top:20px">THE FOOTBALL FESTIVAL BEGINS!</h3>
             <h2 style="font-size:26px; margin-top:10px;">COME, CHEER FOR YOUR HOME TEAM</H2>
@@ -70,6 +70,8 @@
       <li  {% if match_list.number == 2 %} class="active" {% endif %}><a href="?page=2&city=Delhi"  style="padding: 10px 30px;">Sept 27 (morning)</a></li>
       <li  {% if match_list.number == 3 %} class="active" {% endif %}><a href="?page=3&city=Delhi"  style="padding: 10px 30px;">Sept 27 (evening)</a></li>
       <li  {% if match_list.number == 4 %} class="active" {% endif %}><a href="?page=4&city=Delhi"  style="padding: 10px 30px;">Oct 3</a></li>
+      <li  {% if match_list.number == 5 %} class="active" {% endif %}><a href="?page=5&city=Delhi"  style="padding: 10px 30px;">Oct 4 (morning)</a></li>
+      <li  {% if match_list.number == 6 %} class="active" {% endif %}><a href="?page=6&city=Delhi"  style="padding: 10px 30px;">Oct 4 (evening)</a></li>
 </ul>
 {% endif %}
 {% if match_list %}

@@ -13,7 +13,7 @@ from datetime import datetime
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-    	teams = Teams.objects.filter(enabled=True);
+    	teams = Teams.objects.filter(enabled=True,city="Gurgaon");
     	for team in teams:
 	    	team_a_goal1 = (Match.objects.filter(team_a=team,result_type__in=[2,3]).aggregate(Sum('team_a_goal')))["team_a_goal__sum"]
 	        team_a_goal2 = (Match.objects.filter(team_b=team,result_type__in=[2,3]).aggregate(Sum('team_b_goal')))["team_b_goal__sum"]

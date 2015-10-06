@@ -12,10 +12,10 @@ from datetime import datetime
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        f = open("Delhi4m.csv")
+        f = open("Delhi4e.csv")
         reader = csv.reader(f)
         date = "2015-10-04"
-        slot_type = 2
+        slot_type = 1
         j=1
         for row in f.readlines():
             data = row.split('\t')
@@ -107,7 +107,7 @@ class Command(BaseCommand):
     def save_data(self,slot,data,j,c,match_date):
         print data
         city="Delhi"
-        slot_type = 2 
+        slot_type = 1 
         for i in range(2,9,2):
             print "aaaaaaaaa",data[i],data[i+1]
             try:

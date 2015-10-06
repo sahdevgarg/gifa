@@ -15,7 +15,7 @@ class MatchlistingApiView(generics.ListAPIView):
 		try:
 			page = paginator.page(page)
 		except:
-			return Response({"result":"No data avialable for this page"})
+			return Response({"result":{"count":"","next":"","previous":"","results":[]}})
 
 		serializer_match = PageMatchListSerializer(instance=page)
 		return Response({"result":serializer_match.data})

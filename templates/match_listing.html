@@ -5,8 +5,8 @@
       <div class="col-sm-7" style="padding-left: 0px;">
           <img class="pull-left" src="{{STATIC_URL}}image/gifa-logo2.png" width="132px" height="251px" style=" ">
           <div class="reg-area">
-	<h3 style="padding-top:20px">Pre-quarter finals schedule will be announced soon</h3>
-            <h2 style="font-size:20px; margin-top:10px;">Teams qualifying for Pre-quarter finals will be notified through email and calls to the team manager.</h2>	
+	<h3 style="font-size: 26px; padding-top:20px;">Due to the overwhelming response from kids and parents, HT GIFA will have an extra day of matches on 10th Oct giving all the Pool Toppers a chance to play.</h3>
+            
 </div>
       </div>
         <div class="col-sm-2">
@@ -61,6 +61,7 @@
       <li {% if match_list.number == 2 %} class="active" {% endif %}><a href="?page=2&city=Gurgaon"  style="padding: 10px 30px;">Sept 27</a></li>
       <li {% if match_list.number == 3 %} class="active" {% endif %}><a href="?page=3&city=Gurgaon"  style="padding: 10px 30px;">Oct 3</a></li>
       <li {% if match_list.number == 4 %} class="active" {% endif %}><a href="?page=4&city=Gurgaon"  style="padding: 10px 30px;">Oct 4</a></li>
+      <li><a href="/gurgaon-final.htm"  style="padding: 10px 30px;">Final Schedule</a></li>
 </ul>
 {% endif %}
 {% if city == "Delhi" %}
@@ -71,6 +72,7 @@
       <li  {% if match_list.number == 4 %} class="active" {% endif %}><a href="?page=4&city=Delhi"  style="padding: 10px 30px;">Oct 3</a></li>
       <li  {% if match_list.number == 5 %} class="active" {% endif %}><a href="?page=5&city=Delhi"  style="padding: 10px 30px;">Oct 4 (morning)</a></li>
       <li  {% if match_list.number == 6 %} class="active" {% endif %}><a href="?page=6&city=Delhi"  style="padding: 10px 30px;">Oct 4 (evening)</a></li>
+      <li  {% if match_list.number == 7 %} class="active" {% endif %}><a href="?page=7&city=Delhi"  style="padding: 10px 30px;">Oct 10 (evening)</a></li>
 </ul>
 {% endif %}
 {% if match_list %}

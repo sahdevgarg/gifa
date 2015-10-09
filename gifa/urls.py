@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^team/(?P<slug>[-\w]+)/(?P<team_id>[-\w]+).htm$', TeamdetailView.as_view(),name="team_detail"),
     url(r'^write_article.htm', Addarticleview.as_view()),
     url(r'^writer.htm',TemplateView.as_view(template_name="writer.html")),
+    url(r'^gurgaon-final.htm',TemplateView.as_view(template_name="gurgaon-final.html")),
     url(r'^gallery.htm',ImageListview.as_view(),{'html_id':'gallery'}),
     url(r'^edit/article(?P<news_id>[-\w]+).htm$', Editarticleview.as_view()),
     url(r'^image/upload/',NewsImageview.as_view()),

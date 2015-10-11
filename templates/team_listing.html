@@ -96,6 +96,7 @@ display:none;
   </thead>
   <tbody class="list">
   {% for team in team_list %}
+    % if team.team_name != "dummy" %}
     <tr>
       <td class="name">
       <a href="{{team.get_absolute_url}}">{{team.team_name}}</a>
@@ -138,6 +139,7 @@ display:none;
       </td>
     </tr>
   {% endfor %}
+  {% endif %}
   </tbody>
 </table> 
 

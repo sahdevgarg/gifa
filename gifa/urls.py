@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^write_article.htm', Addarticleview.as_view()),
     url(r'^writer.htm',TemplateView.as_view(template_name="writer.html")),
     url(r'^gurgaon-final.htm',TemplateView.as_view(template_name="gurgaon-final.html")),
+    url(r'^delhi-final.htm',TemplateView.as_view(template_name="delhi-final.html")),
     url(r'^gallery.htm',ImageListview.as_view(),{'html_id':'gallery'}),
     url(r'^edit/article(?P<news_id>[-\w]+).htm$', Editarticleview.as_view()),
     url(r'^image/upload/',NewsImageview.as_view()),

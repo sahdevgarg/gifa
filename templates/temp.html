@@ -15,7 +15,7 @@
         <div style="background-color: #fff; padding: 10px 0px 0px; border: 1px solid #d9d9d9; border-radius: 4px;-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);">
         <b>Match {{match.match_no}}</b>
         {% if match.team_a %}
-          {% if match.team_a != "dummy" %}
+          {% if match.team_a.team_name != "dummy" %}
            <h5><a class="team-name" href="{{match.team_a.get_absolute_url}}">{{match.team_a|title}}</a></h5>
             vs
           {% endif %} 

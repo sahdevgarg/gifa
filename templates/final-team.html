@@ -37,10 +37,8 @@
          </div>
       <div class="clearfix"></div>
        <ul class="region nav nav-tabs" style="padding-left: 20px; margin-top:20px;">
-      <li {% if city == "Delhi" and group == "junior"%} class="active"{% endif%}><a href="/teams/listing.htm?city=Delhi&group=junior"  style="padding: 10px 30px;">Delhi (Junior)</a></li>
-      <li {% if city == "Delhi" and group == "senior"%} class="active"{% endif%}><a href="/teams/listing.htm?city=Delhi&group=senior"  style="padding: 10px 30px;">Delhi (Senior)</a></li>
-      <li {% if city == "Gurgaon" and group == "junior" %} class="active"{% endif%}><a href="/teams/listing.htm?city=Gurgaon&group=junior">Gurgaon (Junior)</a></li>
-       <li {% if city == "Gurgaon" and group == "senior" %} class="active"{% endif%}><a href="/teams/listing.htm?city=Gurgaon&group=senior">Gurgaon (Senior)</a></li>
+      <li {% if group == "junior"%} class="active"{% endif%}><a href="/final-team/listing.htm?group=junior"  style="padding: 10px 30px;">Delhi (Junior)</a></li>
+      <li {% if group == "senior"%} class="active"{% endif%}><a href="/final-team/listing.htm?group=senior"  style="padding: 10px 30px;">Delhi (Senior)</a></li>
       </ul>
 
 
@@ -60,18 +58,6 @@
 
 <div class="col-lg-9 col-md-8 news-detail" id="teams">
 <h2>{{city}} Teams</h2>
-{% if city == "Delhi" %}
-<h5 style="color:#222">The venue for all the Teams registered in Delhi will be <a href="/venue/delhi.htm">Delhi Public School, RK Puram.</a></h5>
-{% else %}
-<h5 style="color:#222">The venue for all the Teams registered in Gurgaon will be <a href="/venue/gurgaon.htm">Ansal University.</a></h5>
-{% endif %}
-<br/>
-<!--<input class="search form-control" placeholder="Search" style="margin:10px 0px" />-->
-<style>
-/*
-table.table tbody.list tr:last-of-type {
-display:none;
-}*/ 
 </style>
 <table class="table table-striped table-hover ">
   <thead>
@@ -95,8 +81,9 @@ display:none;
     </tr>
   </thead>
   <tbody class="list">
-  {% for team in team_list %}
-    {% if team.team_name != "dummy" %}
+  {% for ft_team in teams %}
+  {% with ft_team.featured_teams as team %}
+  {% if team.team_name != "dummy" %}
     <tr>
       <td class="name">
       <a href="{{team.get_absolute_url}}">{{team.team_name}}</a>
@@ -138,9 +125,9 @@ display:none;
 
       </td>
     </tr>
-      {% endif %}
+    {% endif %}
+    {% endwith %}
   {% endfor %}
-
   </tbody>
 </table> 
 
@@ -170,14 +157,6 @@ display:none;
   {{ block.super }}
  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
  <script type="text/javascript">
- /* $("document").ready(function(){
-    var options = {
-    valueNames: [ 'name', 'city' ,'manager' , 'draw' , 'loss' , 'win' , 'game','total_goal','total_goal_faced','group','pool'],
-    page : 350
-        };
-    var hackerList = new List('teams', options,300);
-
-  })*/
   </script>
 {% endblock javascript %}
        

@@ -5,7 +5,7 @@ from news.views import *
 from django.views.generic import TemplateView
 from image.views import *
 from gifa.views import IndexView
-from teams.views import TeamsList,TeamdetailView
+from teams.views import TeamsList,TeamdetailView,FeaturedTeamsList
 from match.views import MatchList
 from accounts.views import Userview,Logoutview,UserDetailView
 from news.api_views import NewsListApiView,NewsDetailApiView
@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^$', IndexView.as_view(),name="home"),
     url(r'^news/listing.htm$', NewsList.as_view(),{'html_id':'news'}),
     url(r'^teams/listing.htm$', TeamsList.as_view(),{'html_id':'team'}),
+    url(r'^final-team/listing.htm$', FeaturedTeamsList.as_view(),{'html_id':'team'}),
     url(r'^matches.htm$', MatchList.as_view(),{'html_id':'match'}),
     url(r'^news/(?P<slug>[-\w]+)/article(?P<news_id>[-\w]+).htm$', NewsdetailView.as_view(),name="news_detail"),
     url(r'^team/(?P<slug>[-\w]+)/(?P<team_id>[-\w]+).htm$', TeamdetailView.as_view(),name="team_detail"),

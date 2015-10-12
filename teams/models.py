@@ -38,3 +38,9 @@ class Teams(models.Model):
 
     def __unicode__(self):
 		return self.team_name
+
+class FeaturedTeams(models.Model):
+    featured_teams = models.ForeignKey('Teams');
+    enabled = models.BooleanField(default=True)
+    created_date = models.DateTimeField(_('Created Date'), auto_now_add=True)
+    modified_date = models.DateTimeField(_('Modified Date'), auto_now=True)
